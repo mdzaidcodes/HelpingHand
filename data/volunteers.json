@@ -1,0 +1,429 @@
+[
+  {
+    "id": "v-001",
+    "email": "maria.santos@helpinghand.example",
+    "name": "Maria Santos",
+    "age": 38,
+    "gender": "Female",
+    "nationality": "Filipino",
+    "languages": ["English", "Tagalog"],
+    "yearsExperience": 12,
+    "bio": "Compassionate volunteer with over a decade of supporting elders through daily routines and mobility challenges. Calm, patient, and a wonderful listener.",
+    "skills": { "mobilitySupport": true, "medicationManagement": false, "mealPreparation": true, "companionship": true, "personalCare": true, "dementiaCare": false, "postSurgeryCare": false },
+    "rating": 4.9,
+    "reviewCount": 86,
+    "reviews": [
+      { "author": "Aisha R.", "relation": "Granddaughter", "date": "March 2026", "rating": 5, "text": "Maria treated my grandmother like her own. She would sing to her in the afternoons and remember every little preference." },
+      { "author": "Mohammed K.", "relation": "Son", "date": "February 2026", "rating": 5, "text": "Endlessly patient with my father after his fall. Never rushing, always kind." },
+      { "author": "Hala M.", "relation": "Niece", "date": "November 2025", "rating": 5, "text": "I cannot recommend her enough. My aunt now smiles when she hears Maria at the door." },
+      { "author": "Faisal A.", "relation": "Son", "date": "September 2025", "rating": 5, "text": "Reliable beyond words. Learned my father's favourite Filipino dishes too." }
+    ],
+    "availability": "Both",
+    "certifications": ["First Aid", "CPR", "Elderly Care Diploma"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Khalidiyah",
+    "lat": 24.4750,
+    "lng": 54.3635,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-11-04T10:00:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-001", "patientName": "Aisha Al-Mansouri", "patientNeighborhood": "Khalidiyah", "hours": 28.5, "sessions": 12, "startDate": "2025-09-15", "lastVisit": "2026-06-16", "status": "Active" },
+      { "patientId": "pa-007", "patientName": "Catherine O'Brien", "patientNeighborhood": "Saadiyat Island", "hours": 14.0, "sessions": 6, "startDate": "2025-05-20", "lastVisit": "2025-08-12", "status": "Completed" }
+    ],
+    "notifications": [
+      { "id": "n-001-1", "patientId": "pa-005", "patientName": "Mariam Salem", "patientNeighborhood": "Al Markaziyah", "message": "has requested you for weekend companionship visits.", "createdAt": "2026-06-15T09:14:00.000Z", "unread": true },
+      { "id": "n-001-2", "patientId": "pa-009", "patientName": "Noura Hassan", "patientNeighborhood": "Reem Island", "message": "would like meal-preparation support twice a week.", "createdAt": "2026-06-12T13:40:00.000Z", "unread": true }
+    ],
+    "createdAt": "2024-10-12T00:00:00.000Z"
+  },
+  {
+    "id": "v-002",
+    "email": "aarti.sharma@helpinghand.example",
+    "name": "Aarti Sharma",
+    "age": 42,
+    "gender": "Female",
+    "nationality": "Indian",
+    "languages": ["English", "Hindi", "Urdu"],
+    "yearsExperience": 15,
+    "bio": "Trained nurse turned home volunteer. Specialises in medication reminders and post-surgery recovery support. Speaks softly, listens deeply.",
+    "skills": { "mobilitySupport": false, "medicationManagement": true, "mealPreparation": false, "companionship": true, "personalCare": true, "dementiaCare": false, "postSurgeryCare": true },
+    "rating": 4.8,
+    "reviewCount": 112,
+    "reviews": [
+      { "author": "Rajesh V.", "relation": "Son", "date": "April 2026", "rating": 5, "text": "Aarti's nursing background was invaluable during my mother's recovery from hip surgery." },
+      { "author": "Yasmin H.", "relation": "Daughter", "date": "March 2026", "rating": 5, "text": "She speaks to my mother in Hindi — such a comfort. Their afternoons feel like old friends catching up." },
+      { "author": "Khaled M.", "relation": "Son", "date": "October 2025", "rating": 5, "text": "Trustworthy, calm in emergencies, and treats my father with such dignity." },
+      { "author": "Noor S.", "relation": "Granddaughter", "date": "August 2025", "rating": 5, "text": "She remembered my grandmother's birthday and brought her a small flower." }
+    ],
+    "availability": "Hourly",
+    "certifications": ["Registered Nurse", "CPR", "Geriatric Care"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Al Bateen",
+    "lat": 24.4565,
+    "lng": 54.3480,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-08-22T14:00:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-004", "patientName": "Rajesh Verma", "patientNeighborhood": "Al Bateen", "hours": 12.0, "sessions": 6, "startDate": "2026-03-05", "lastVisit": "2026-06-15", "status": "Active" },
+      { "patientId": "pa-006", "patientName": "Yusuf Khan", "patientNeighborhood": "Al Mushrif", "hours": 22.0, "sessions": 10, "startDate": "2025-11-18", "lastVisit": "2026-06-14", "status": "Active" }
+    ],
+    "notifications": [
+      { "id": "n-002-1", "patientId": "pa-008", "patientName": "Mohammed Al-Suwaidi", "patientNeighborhood": "MBZ City", "message": "family asking about post-stroke medication management.", "createdAt": "2026-06-13T08:20:00.000Z", "unread": true },
+      { "id": "n-002-2", "patientId": "pa-010", "patientName": "Ali Rashid", "patientNeighborhood": "Khalifa City", "message": "would like additional Hindi-speaking nurse for medication review.", "createdAt": "2026-06-10T10:00:00.000Z", "unread": true }
+    ],
+    "createdAt": "2024-07-30T00:00:00.000Z"
+  },
+  {
+    "id": "v-003",
+    "email": "fatima.alhashimi@helpinghand.example",
+    "name": "Fatima Al-Hashimi",
+    "age": 34,
+    "gender": "Female",
+    "nationality": "Emirati",
+    "languages": ["Arabic", "English"],
+    "yearsExperience": 8,
+    "bio": "Local volunteer who deeply understands cultural and dietary preferences. Warm, respectful, and skilled at companionship-led care.",
+    "skills": { "mobilitySupport": true, "medicationManagement": false, "mealPreparation": true, "companionship": true, "personalCare": false, "dementiaCare": false, "postSurgeryCare": false },
+    "rating": 4.9,
+    "reviewCount": 54,
+    "reviews": [
+      { "author": "Mariam K.", "relation": "Daughter", "date": "May 2026", "rating": 5, "text": "Fatima cooks the same dishes my mother grew up with. Their Arabic conversations bring my mother so much joy." },
+      { "author": "Hassan A.", "relation": "Son", "date": "March 2026", "rating": 5, "text": "She understands our family's customs without us having to explain. Respectful, modest, deeply kind." },
+      { "author": "Amna L.", "relation": "Granddaughter", "date": "November 2025", "rating": 5, "text": "Patient and gentle. My grandmother lights up when she walks in." },
+      { "author": "Abdullah R.", "relation": "Husband", "date": "September 2025", "rating": 5, "text": "Fatima helped my wife regain her confidence after she stopped going out." }
+    ],
+    "availability": "Hourly",
+    "certifications": ["Elderly Care Certificate", "First Aid"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Al Markaziyah",
+    "lat": 24.4880,
+    "lng": 54.3760,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-12-09T11:00:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-001", "patientName": "Aisha Al-Mansouri", "patientNeighborhood": "Khalidiyah", "hours": 16.0, "sessions": 8, "startDate": "2026-01-20", "lastVisit": "2026-06-15", "status": "Active" },
+      { "patientId": "pa-005", "patientName": "Mariam Salem", "patientNeighborhood": "Al Markaziyah", "hours": 22.0, "sessions": 9, "startDate": "2025-08-10", "lastVisit": "2025-12-04", "status": "Completed" }
+    ],
+    "notifications": [
+      { "id": "n-003-1", "patientId": "pa-009", "patientName": "Noura Hassan", "patientNeighborhood": "Reem Island", "message": "invited you for daily companionship visits.", "createdAt": "2026-06-14T16:00:00.000Z", "unread": true },
+      { "id": "n-003-2", "patientId": "pa-002", "patientName": "Khalid Hashim", "patientNeighborhood": "Al Bateen", "message": "asking for an Arabic-speaking companion for his wife.", "createdAt": "2026-06-09T11:30:00.000Z", "unread": false }
+    ],
+    "createdAt": "2024-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "v-004",
+    "email": "daniel.okeke@helpinghand.example",
+    "name": "Daniel Okeke",
+    "age": 36,
+    "gender": "Male",
+    "nationality": "Nigerian",
+    "languages": ["English"],
+    "yearsExperience": 9,
+    "bio": "Strong and gentle. Experienced with mobility transfers and supporting elders who need physical assistance. A reassuring, steady presence.",
+    "skills": { "mobilitySupport": true, "medicationManagement": false, "mealPreparation": false, "companionship": false, "personalCare": true, "dementiaCare": false, "postSurgeryCare": true },
+    "rating": 4.7,
+    "reviewCount": 41,
+    "reviews": [
+      { "author": "James P.", "relation": "Son", "date": "April 2026", "rating": 5, "text": "Strong enough to support my father after his stroke, gentle enough not to bruise his dignity." },
+      { "author": "Linda M.", "relation": "Daughter", "date": "February 2026", "rating": 5, "text": "Steady, calm, dependable. We never worried with Daniel around." },
+      { "author": "Catherine O.", "relation": "Wife", "date": "November 2025", "rating": 5, "text": "Daniel cared for my husband during his final months. I will be grateful forever." },
+      { "author": "Michael T.", "relation": "Son", "date": "September 2025", "rating": 5, "text": "Punctual, respectful, treated our home as if it were his own." }
+    ],
+    "availability": "Live-in",
+    "certifications": ["Elderly Care Certificate", "CPR"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Mussafah",
+    "lat": 24.3540,
+    "lng": 54.5025,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-09-15T09:30:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-007", "patientName": "Catherine O'Brien", "patientNeighborhood": "Saadiyat Island", "hours": 19.0, "sessions": 8, "startDate": "2025-04-12", "lastVisit": "2025-07-30", "status": "Completed" }
+    ],
+    "notifications": [
+      { "id": "n-004-1", "patientId": "pa-010", "patientName": "Ali Rashid", "patientNeighborhood": "Khalifa City", "message": "post-stroke mobility support needed.", "createdAt": "2026-06-14T07:50:00.000Z", "unread": true }
+    ],
+    "createdAt": "2024-08-20T00:00:00.000Z"
+  },
+  {
+    "id": "v-005",
+    "email": "liwayway.cruz@helpinghand.example",
+    "name": "Liwayway Cruz",
+    "age": 45,
+    "gender": "Female",
+    "nationality": "Filipino",
+    "languages": ["English", "Tagalog"],
+    "yearsExperience": 18,
+    "bio": "Seasoned live-in volunteer. Known for outstanding dementia care and creating a calm, structured daily routine that brings ease to the whole household.",
+    "skills": { "mobilitySupport": true, "medicationManagement": false, "mealPreparation": true, "companionship": true, "personalCare": true, "dementiaCare": true, "postSurgeryCare": false },
+    "rating": 5.0,
+    "reviewCount": 73,
+    "reviews": [
+      { "author": "Amira S.", "relation": "Daughter", "date": "May 2026", "rating": 5, "text": "Liwayway is a gift. My mother's dementia frightens us, but Liwayway brings such calm." },
+      { "author": "Tariq H.", "relation": "Son", "date": "April 2026", "rating": 5, "text": "I have never met someone with more patience. Our lives have changed." },
+      { "author": "Adel M.", "relation": "Son", "date": "November 2025", "rating": 5, "text": "Eighteen years of experience shows in everything she does. We trust her completely." },
+      { "author": "Hessa B.", "relation": "Daughter", "date": "October 2025", "rating": 5, "text": "A true professional with the heart of a daughter. My mother adores her." }
+    ],
+    "availability": "Live-in",
+    "certifications": ["Dementia Care Specialist", "First Aid", "CPR"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Saadiyat Island",
+    "lat": 24.5220,
+    "lng": 54.4520,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-06-10T10:00:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-003", "patientName": "Layla Habib", "patientNeighborhood": "Corniche", "hours": 88.0, "sessions": 22, "startDate": "2025-12-01", "lastVisit": "2026-06-17", "status": "Active" }
+    ],
+    "notifications": [
+      { "id": "n-005-1", "patientId": "pa-008", "patientName": "Mohammed Al-Suwaidi", "patientNeighborhood": "MBZ City", "message": "family considering live-in support for dementia care.", "createdAt": "2026-06-11T19:00:00.000Z", "unread": true }
+    ],
+    "createdAt": "2024-05-22T00:00:00.000Z"
+  },
+  {
+    "id": "v-006",
+    "email": "noura.mansour@helpinghand.example",
+    "name": "Noura Mansour",
+    "age": 31,
+    "gender": "Female",
+    "nationality": "Egyptian",
+    "languages": ["Arabic", "English"],
+    "yearsExperience": 6,
+    "bio": "Friendly and patient. Loves cooking traditional meals and keeping elders company through long afternoons.",
+    "skills": { "mobilitySupport": false, "medicationManagement": true, "mealPreparation": true, "companionship": true, "personalCare": false, "dementiaCare": false, "postSurgeryCare": false },
+    "rating": 4.6,
+    "reviewCount": 28,
+    "reviews": [
+      { "author": "Khadija A.", "relation": "Daughter", "date": "April 2026", "rating": 5, "text": "Noura makes the most wonderful koshari. My mother looks forward to her visits." },
+      { "author": "Walid R.", "relation": "Son", "date": "March 2026", "rating": 5, "text": "Cheerful and reliable. My father took to her immediately." },
+      { "author": "Yusuf E.", "relation": "Son", "date": "December 2025", "rating": 5, "text": "Noura is gentle and kind. My mother leaves the house feeling lighter." }
+    ],
+    "availability": "Hourly",
+    "certifications": ["Home Care Certificate"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Corniche",
+    "lat": 24.4790,
+    "lng": 54.3460,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2025-01-18T13:30:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-005", "patientName": "Mariam Salem", "patientNeighborhood": "Al Markaziyah", "hours": 18.0, "sessions": 9, "startDate": "2026-02-14", "lastVisit": "2026-06-16", "status": "Active" },
+      { "patientId": "pa-009", "patientName": "Noura Hassan", "patientNeighborhood": "Reem Island", "hours": 16.0, "sessions": 7, "startDate": "2026-03-22", "lastVisit": "2026-06-13", "status": "Active" }
+    ],
+    "notifications": [
+      { "id": "n-006-1", "patientId": "pa-001", "patientName": "Aisha Al-Mansouri", "patientNeighborhood": "Khalidiyah", "message": "weekly meal preparation visits.", "createdAt": "2026-06-15T11:00:00.000Z", "unread": true }
+    ],
+    "createdAt": "2024-12-20T00:00:00.000Z"
+  },
+  {
+    "id": "v-007",
+    "email": "rajiv.patel@helpinghand.example",
+    "name": "Rajiv Patel",
+    "age": 39,
+    "gender": "Male",
+    "nationality": "Indian",
+    "languages": ["English", "Hindi", "Gujarati"],
+    "yearsExperience": 11,
+    "bio": "Calm and reliable, with a physiotherapy background. Excellent with post-surgery recovery and helping elders regain confidence with movement.",
+    "skills": { "mobilitySupport": true, "medicationManagement": true, "mealPreparation": false, "companionship": false, "personalCare": false, "dementiaCare": false, "postSurgeryCare": true },
+    "rating": 4.8,
+    "reviewCount": 67,
+    "reviews": [
+      { "author": "Vinod K.", "relation": "Son", "date": "May 2026", "rating": 5, "text": "Rajiv's physio background was exactly what my father needed after his knee replacement." },
+      { "author": "Hema D.", "relation": "Daughter", "date": "April 2026", "rating": 5, "text": "Calm and patient. My mother felt at ease with Rajiv from the first visit." },
+      { "author": "Sanjay P.", "relation": "Son", "date": "February 2026", "rating": 5, "text": "He explains exercises clearly and never pushes too hard." },
+      { "author": "Nikhil S.", "relation": "Son", "date": "November 2025", "rating": 5, "text": "Dependable, kind, and skilled. Worth every minute." }
+    ],
+    "availability": "Both",
+    "certifications": ["Physiotherapy Assistant", "CPR"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Khalifa City",
+    "lat": 24.4310,
+    "lng": 54.5780,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-10-28T15:00:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-004", "patientName": "Rajesh Verma", "patientNeighborhood": "Al Bateen", "hours": 24.0, "sessions": 10, "startDate": "2026-02-28", "lastVisit": "2026-06-17", "status": "Active" },
+      { "patientId": "pa-010", "patientName": "Ali Rashid", "patientNeighborhood": "Khalifa City", "hours": 28.0, "sessions": 12, "startDate": "2025-11-05", "lastVisit": "2026-06-16", "status": "Active" }
+    ],
+    "notifications": [
+      { "id": "n-007-1", "patientId": "pa-006", "patientName": "Yusuf Khan", "patientNeighborhood": "Al Mushrif", "message": "physiotherapy follow-up requested.", "createdAt": "2026-06-12T09:00:00.000Z", "unread": true }
+    ],
+    "createdAt": "2024-09-15T00:00:00.000Z"
+  },
+  {
+    "id": "v-008",
+    "email": "grace.mwangi@helpinghand.example",
+    "name": "Grace Mwangi",
+    "age": 29,
+    "gender": "Female",
+    "nationality": "Kenyan",
+    "languages": ["English", "Swahili"],
+    "yearsExperience": 5,
+    "bio": "Cheerful volunteer who genuinely enjoys spending time with elders. A bright, steady companion who brings energy without overwhelm.",
+    "skills": { "mobilitySupport": true, "medicationManagement": false, "mealPreparation": true, "companionship": true, "personalCare": false, "dementiaCare": false, "postSurgeryCare": false },
+    "rating": 4.7,
+    "reviewCount": 22,
+    "reviews": [
+      { "author": "Bushra M.", "relation": "Daughter", "date": "April 2026", "rating": 5, "text": "Grace lights up every room she enters. My mother's mood has improved enormously." },
+      { "author": "Tariq A.", "relation": "Son", "date": "March 2026", "rating": 5, "text": "Young but mature beyond her years. Reliable, warm, respectful." },
+      { "author": "Hadi N.", "relation": "Son", "date": "November 2025", "rating": 5, "text": "She brought music back into my mother's days. They sing together in the kitchen." }
+    ],
+    "availability": "Live-in",
+    "certifications": ["First Aid"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Reem Island",
+    "lat": 24.4985,
+    "lng": 54.3960,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2025-02-26T14:00:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-009", "patientName": "Noura Hassan", "patientNeighborhood": "Reem Island", "hours": 12.0, "sessions": 5, "startDate": "2026-04-04", "lastVisit": "2026-06-15", "status": "Active" }
+    ],
+    "notifications": [
+      { "id": "n-008-1", "patientId": "pa-005", "patientName": "Mariam Salem", "patientNeighborhood": "Al Markaziyah", "message": "light companionship visits requested.", "createdAt": "2026-06-13T10:30:00.000Z", "unread": true }
+    ],
+    "createdAt": "2025-01-25T00:00:00.000Z"
+  },
+  {
+    "id": "v-009",
+    "email": "ahmed.khalil@helpinghand.example",
+    "name": "Ahmed Khalil",
+    "age": 44,
+    "gender": "Male",
+    "nationality": "Jordanian",
+    "languages": ["Arabic", "English"],
+    "yearsExperience": 14,
+    "bio": "Patient and respectful male volunteer. Specialises in mobility support and assisting elders with daily activities. A reassuring presence in the home.",
+    "skills": { "mobilitySupport": true, "medicationManagement": true, "mealPreparation": false, "companionship": true, "personalCare": true, "dementiaCare": false, "postSurgeryCare": false },
+    "rating": 4.8,
+    "reviewCount": 59,
+    "reviews": [
+      { "author": "Omar Y.", "relation": "Son", "date": "May 2026", "rating": 5, "text": "Having a man who spoke Arabic and shared his background meant everything to my father." },
+      { "author": "Salwa M.", "relation": "Daughter", "date": "March 2026", "rating": 5, "text": "Respectful, dignified, never makes my father feel like a patient." },
+      { "author": "Karim R.", "relation": "Son", "date": "February 2026", "rating": 5, "text": "Fourteen years of experience and you can feel it. Nothing fazes him." },
+      { "author": "Iman K.", "relation": "Granddaughter", "date": "August 2025", "rating": 5, "text": "Warm, careful, trustworthy. My grandfather speaks of him as a friend." }
+    ],
+    "availability": "Both",
+    "certifications": ["Elderly Care Diploma", "CPR", "First Aid"],
+    "city": "Abu Dhabi",
+    "neighborhood": "MBZ City",
+    "lat": 24.4005,
+    "lng": 54.5530,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-07-12T11:00:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-002", "patientName": "Khalid Hashim", "patientNeighborhood": "Al Bateen", "hours": 32.0, "sessions": 14, "startDate": "2025-09-08", "lastVisit": "2026-06-16", "status": "Active" },
+      { "patientId": "pa-008", "patientName": "Mohammed Al-Suwaidi", "patientNeighborhood": "MBZ City", "hours": 56.0, "sessions": 24, "startDate": "2025-07-12", "lastVisit": "2026-06-17", "status": "Active" }
+    ],
+    "notifications": [
+      { "id": "n-009-1", "patientId": "pa-006", "patientName": "Yusuf Khan", "patientNeighborhood": "Al Mushrif", "message": "asking for medication management twice weekly.", "createdAt": "2026-06-14T15:00:00.000Z", "unread": true }
+    ],
+    "createdAt": "2024-06-18T00:00:00.000Z"
+  },
+  {
+    "id": "v-010",
+    "email": "elena.petrova@helpinghand.example",
+    "name": "Elena Petrova",
+    "age": 37,
+    "gender": "Female",
+    "nationality": "Russian",
+    "languages": ["English", "Russian"],
+    "yearsExperience": 10,
+    "bio": "Trained nurse with strong dementia care experience. A gentle approach and deep patience. Methodical without ever feeling clinical.",
+    "skills": { "mobilitySupport": false, "medicationManagement": true, "mealPreparation": false, "companionship": false, "personalCare": true, "dementiaCare": true, "postSurgeryCare": false },
+    "rating": 4.9,
+    "reviewCount": 48,
+    "reviews": [
+      { "author": "Olga V.", "relation": "Daughter", "date": "May 2026", "rating": 5, "text": "Elena's nursing skill is beyond question, but it is her gentleness that makes her exceptional." },
+      { "author": "Mikhail R.", "relation": "Son", "date": "April 2026", "rating": 5, "text": "Methodical, kind, and patient. She remembers details I had forgotten." },
+      { "author": "Anastasia K.", "relation": "Daughter", "date": "February 2026", "rating": 5, "text": "Speaking Russian with my mother was a quiet gift." },
+      { "author": "Tatiana M.", "relation": "Granddaughter", "date": "October 2025", "rating": 5, "text": "My grandmother now waits at the window for Elena to arrive." }
+    ],
+    "availability": "Hourly",
+    "certifications": ["Registered Nurse", "Dementia Care"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Al Mushrif",
+    "lat": 24.4430,
+    "lng": 54.3760,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-08-30T10:30:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-011", "patientName": "Tatiana Sokolov", "patientNeighborhood": "Khalidiyah", "hours": 32.0, "sessions": 14, "startDate": "2025-10-02", "lastVisit": "2026-06-15", "status": "Active" }
+    ],
+    "notifications": [
+      { "id": "n-010-1", "patientId": "pa-003", "patientName": "Layla Habib", "patientNeighborhood": "Corniche", "message": "backup dementia care during family travel.", "createdAt": "2026-06-10T16:45:00.000Z", "unread": true }
+    ],
+    "createdAt": "2024-08-02T00:00:00.000Z"
+  },
+  {
+    "id": "v-011",
+    "email": "joseph.lim@helpinghand.example",
+    "name": "Joseph Lim",
+    "age": 41,
+    "gender": "Male",
+    "nationality": "Filipino",
+    "languages": ["English", "Tagalog"],
+    "yearsExperience": 13,
+    "bio": "Reliable live-in volunteer with experience in companionship and meal preparation. Treats every elder he supports as part of his own family.",
+    "skills": { "mobilitySupport": true, "medicationManagement": false, "mealPreparation": true, "companionship": true, "personalCare": true, "dementiaCare": false, "postSurgeryCare": false },
+    "rating": 4.8,
+    "reviewCount": 70,
+    "reviews": [
+      { "author": "Khalid M.", "relation": "Son", "date": "May 2026", "rating": 5, "text": "Joseph has been with my father for two years. He is family." },
+      { "author": "Reem H.", "relation": "Daughter", "date": "March 2026", "rating": 5, "text": "Steady, devoted, and warm. He learned every detail of my mother's routine." },
+      { "author": "Sami A.", "relation": "Son", "date": "February 2026", "rating": 5, "text": "Joseph treats my father with the kind of respect you usually only see from a son." },
+      { "author": "Huda K.", "relation": "Daughter-in-law", "date": "August 2025", "rating": 5, "text": "He anticipates needs before anyone has to ask." }
+    ],
+    "availability": "Live-in",
+    "certifications": ["Elderly Care Diploma", "CPR"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Yas Island",
+    "lat": 24.4850,
+    "lng": 54.6050,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-07-22T12:00:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-008", "patientName": "Mohammed Al-Suwaidi", "patientNeighborhood": "MBZ City", "hours": 80.0, "sessions": 18, "startDate": "2025-10-15", "lastVisit": "2026-06-17", "status": "Active" },
+      { "patientId": "pa-002", "patientName": "Khalid Hashim", "patientNeighborhood": "Al Bateen", "hours": 16.0, "sessions": 7, "startDate": "2025-05-20", "lastVisit": "2025-08-25", "status": "Completed" }
+    ],
+    "notifications": [
+      { "id": "n-011-1", "patientId": "pa-004", "patientName": "Rajesh Verma", "patientNeighborhood": "Al Bateen", "message": "considering live-in support during recovery.", "createdAt": "2026-06-12T18:20:00.000Z", "unread": true }
+    ],
+    "createdAt": "2024-06-30T00:00:00.000Z"
+  },
+  {
+    "id": "v-012",
+    "email": "layla.hassan@helpinghand.example",
+    "name": "Layla Hassan",
+    "age": 33,
+    "gender": "Female",
+    "nationality": "Lebanese",
+    "languages": ["Arabic", "English", "French"],
+    "yearsExperience": 7,
+    "bio": "Trilingual volunteer with a background in nutrition. Skilled in thoughtful meal preparation and medication reminders.",
+    "skills": { "mobilitySupport": false, "medicationManagement": true, "mealPreparation": true, "companionship": true, "personalCare": false, "dementiaCare": false, "postSurgeryCare": false },
+    "rating": 4.7,
+    "reviewCount": 35,
+    "reviews": [
+      { "author": "Mariam J.", "relation": "Daughter", "date": "April 2026", "rating": 5, "text": "Layla redesigned my mother's meals to suit her diabetes without ever making her feel deprived." },
+      { "author": "Ziad N.", "relation": "Son", "date": "March 2026", "rating": 5, "text": "Her French is a delight for my father, who grew up in Beirut and Paris." },
+      { "author": "Rami K.", "relation": "Son", "date": "November 2025", "rating": 5, "text": "Thoughtful, organised, and genuinely warm. My mother adores her." }
+    ],
+    "availability": "Hourly",
+    "certifications": ["Nutritionist Certificate", "First Aid"],
+    "city": "Abu Dhabi",
+    "neighborhood": "Al Karamah",
+    "lat": 24.4605,
+    "lng": 54.3800,
+    "trainingProgress": { "completedLessonIds": ["b1","b2","b3","i1","i2","i3","a1","a2","a3"] },
+    "interview": { "scheduledFor": "2024-11-29T14:30:00.000Z", "status": "completed" },
+    "patientHistory": [
+      { "patientId": "pa-003", "patientName": "Layla Habib", "patientNeighborhood": "Corniche", "hours": 18.0, "sessions": 8, "startDate": "2025-06-04", "lastVisit": "2025-11-15", "status": "Completed" }
+    ],
+    "notifications": [
+      { "id": "n-012-1", "patientId": "pa-007", "patientName": "Catherine O'Brien", "patientNeighborhood": "Saadiyat Island", "message": "nutrition guidance during recovery.", "createdAt": "2026-06-08T13:00:00.000Z", "unread": false }
+    ],
+    "createdAt": "2024-10-22T00:00:00.000Z"
+  }
+]

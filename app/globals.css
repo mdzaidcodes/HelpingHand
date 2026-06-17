@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #fbfaf6;
+  --fg: #0f1a17;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'Fraunces', ui-serif, Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold transition-all duration-200;
+}
+.btn-primary {
+  @apply btn bg-brand-700 text-white shadow-soft hover:bg-brand-800 hover:shadow-lift active:translate-y-px;
+}
+.btn-ghost {
+  @apply btn bg-white text-brand-800 border border-brand-100 hover:bg-brand-50 hover:border-brand-200;
+}
+.btn-warm {
+  @apply btn bg-warm-100 text-brand-900 border border-warm-200 hover:bg-warm-200;
+}
+
+/* Cards */
+.card {
+  @apply bg-white rounded-3xl shadow-soft border border-brand-100/60 p-7;
+}
+.card-elevated {
+  @apply bg-white rounded-3xl shadow-lift border border-brand-100/60 p-7;
+}
+
+/* Chips */
+.chip {
+  @apply inline-flex items-center gap-1.5 rounded-full bg-brand-50 text-brand-800 px-3.5 py-1.5 text-sm font-medium border border-brand-100;
+}
+.chip-warm {
+  @apply inline-flex items-center gap-1.5 rounded-full bg-warm-100 text-brand-900 px-3.5 py-1.5 text-sm font-medium border border-warm-200;
+}
+.chip-muted {
+  @apply inline-flex items-center gap-1.5 rounded-full bg-stone-100 text-ink-700 px-3.5 py-1.5 text-sm font-medium;
+}
+
+/* Form controls */
+.input, .select, .textarea {
+  @apply w-full rounded-2xl border border-brand-100 bg-white px-5 py-3.5 text-ink-900 transition;
+}
+.input:focus, .select:focus, .textarea:focus {
+  @apply outline-none border-brand-400 ring-2 ring-brand-200;
+}
+
+/* Decorative dotted background for the hero */
+.dot-grid {
+  background-image: radial-gradient(rgba(31, 131, 102, 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Soft underline accent for headings */
+.heading-accent {
+  position: relative;
+  display: inline-block;
+}
+.heading-accent::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 8px;
+  background: linear-gradient(90deg, rgba(180, 134, 47, 0.45), rgba(180, 134, 47, 0));
+  border-radius: 999px;
+}
+
