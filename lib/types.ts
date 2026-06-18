@@ -313,6 +313,34 @@ export interface Patient {
 
 export type Role = 'patient' | 'volunteer';
 
+/* ----------- Forum ----------- */
+
+export type ForumAudience = 'patient' | 'volunteer';
+
+export interface ForumReply {
+  id: string;
+  authorId: string;
+  authorName: string;
+  authorRole: Role;
+  body: string;
+  createdAt: string;
+  likedBy: string[];
+  replies: ForumReply[];
+}
+
+export interface ForumPost {
+  id: string;
+  audience: ForumAudience;
+  authorId: string;
+  authorName: string;
+  authorRole: Role;
+  title?: string;
+  body: string;
+  createdAt: string;
+  likedBy: string[];
+  replies: ForumReply[];
+}
+
 export interface Session {
   userId: string;
   role: Role;

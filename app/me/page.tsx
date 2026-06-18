@@ -18,6 +18,11 @@ import { SKILL_LABELS } from '@/lib/types';
 import type { Patient, Volunteer, CareSkill, CareRequest, RequestStatus } from '@/lib/types';
 import { ScheduleVisual, deriveSchedule } from '@/components/ScheduleVisual';
 import { PatientDetailsCard } from '@/components/PatientDetailsCard';
+import {
+  NotificationCarousel,
+  PATIENT_UPDATES,
+  VOLUNTEER_UPDATES,
+} from '@/components/NotificationCarousel';
 
 export default function DashboardPage() {
   const { session, ready } = useSession();
@@ -126,34 +131,60 @@ function PatientView({ session, patient }: { session: { userId: string; name: st
       <AcceptedBanner accepted={accepted} />
       <DeclinedBanner declined={declined} />
 
-      <Stagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* Carousel — important updates */}
+      <Reveal delay={0.05}>
+        <NotificationCarousel updates={PATIENT_UPDATES} className="mb-10" />
+      </Reveal>
+
+      {/* Quick actions */}
+      <Reveal delay={0.1}>
+        <div className="mb-6">
+          <h2 className="font-display text-2xl font-semibold text-ink-900">Where would you like to start?</h2>
+          <p className="text-ink-600 mt-1">The most common things you might want to do.</p>
+        </div>
+      </Reveal>
+      <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <StaggerItem>
-          <DashCard href="/volunteers" eyebrow="Care matches" title="Meet volunteers chosen for you" body="See volunteers ranked by your preferences, on a map of Abu Dhabi." cta="View matches" />
+          <ActionTile
+            href="/volunteers"
+            icon={<RequestVolunteerIcon />}
+            eyebrow="Volunteers"
+            title="Request a volunteer"
+            body="Browse matched volunteers and send a request when you find the right person."
+            tone="brand"
+          />
         </StaggerItem>
         <StaggerItem>
-          <DashCard
+          <ActionTile
+            href="/preferences"
+            icon={<PreferencesIcon />}
+            eyebrow={prefsSet ? 'Preferences' : 'Not set yet'}
+            title={prefsSet ? 'Update preferences' : 'Tell us your preferences'}
+            body={prefsSet ? 'Refine your language, gender, nationality, and care needs.' : 'A few thoughtful questions to refine your matches.'}
+            tone="warm"
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <ActionTile
             href="/me/requests"
+            icon={<TrackRequestsIcon />}
             eyebrow="Requests"
-            title={hasAnyRequest ? 'Track your requests' : 'No requests yet'}
-            body={requestsBody}
-            cta={hasAnyRequest ? 'View requests' : 'Browse volunteers'}
-            variant={accepted.length > 0 ? 'brand' : 'warm'}
+            title="Track your requests"
+            body={hasAnyRequest ? requestsBody : 'See pending, accepted, and past responses in one place.'}
+            tone="brand"
             badge={badgeText}
             badgeTone={badgeTone}
           />
         </StaggerItem>
         <StaggerItem>
-          <DashCard
-            href="/preferences"
-            eyebrow="Preferences"
-            title={prefsSet ? 'Review your preferences' : 'Tell us your preferences'}
-            body={prefsSet ? 'Keep them up to date as your needs change.' : 'A few thoughtful questions to refine your matches.'}
-            cta={prefsSet ? 'Review' : 'Begin'}
-            variant={prefsSet ? 'brand' : 'warm'}
+          <ActionTile
+            href="/me/health"
+            icon={<MedicalIcon />}
+            eyebrow={healthSet ? 'Health profile' : 'Not set yet'}
+            title="Update medical records"
+            body="Allergies, conditions, medications, emergency contacts, and your medical team."
+            tone="warm"
           />
-        </StaggerItem>
-        <StaggerItem>
-          <DashCard href="/me/health" eyebrow="Health profile" title={healthSet ? 'Update your health profile' : 'Set up your health profile'} body="Allergies, medications, emergency contacts." cta={healthSet ? 'Update' : 'Begin'} variant="warm" />
         </StaggerItem>
       </Stagger>
 
@@ -319,6 +350,14 @@ function VolunteerFullProfile({ volunteer }: { volunteer: Volunteer }) {
   const [toasts, setToasts] = useState<IncomingToast[]>([]);
   const seenIdsRef = useRef<Set<string>>(new Set());
   const firstLoadRef = useRef(false);
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  function jumpToTab(target: 'notifications' | 'history') {
+    setTab(target);
+    requestAnimationFrame(() => {
+      tabsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 
   // Live fetch of requests for this volunteer, with polling for near-real-time updates.
   useEffect(() => {
@@ -431,6 +470,71 @@ function VolunteerFullProfile({ volunteer }: { volunteer: Volunteer }) {
         </div>
       </Reveal>
 
+      {/* Carousel — important updates for volunteers */}
+      <Reveal delay={0.05}>
+        <NotificationCarousel updates={VOLUNTEER_UPDATES} />
+      </Reveal>
+
+      {/* Quick actions */}
+      <Reveal delay={0.08}>
+        <div className="mb-6">
+          <h2 className="font-display text-2xl font-semibold text-ink-900">Your day at a glance</h2>
+          <p className="text-ink-600 mt-1">The most common things you might want to do.</p>
+        </div>
+      </Reveal>
+      <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <StaggerItem>
+          <ActionTile
+            onClick={() => jumpToTab('notifications')}
+            icon={<RequestVolunteerIcon />}
+            eyebrow="Notifications"
+            title="See new requests"
+            body={pending.length > 0
+              ? `${pending.length} ${pending.length === 1 ? 'family is' : 'families are'} waiting for your reply.`
+              : 'You\'re all caught up. New requests will appear here.'}
+            tone="brand"
+            badge={unreadCount > 0 ? `${unreadCount} new` : undefined}
+            badgeTone="warm"
+            cta="Open inbox →"
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <ActionTile
+            onClick={() => jumpToTab('history')}
+            icon={<PatientHistoryIcon />}
+            eyebrow="Your families"
+            title="Patient history"
+            body={history.length > 0
+              ? `${history.length} ${history.length === 1 ? 'family' : 'families'} you've cared for, ${totalHours.toFixed(0)} hours given.`
+              : 'No history yet — your story begins now.'}
+            tone="brand"
+            cta="View history →"
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <ActionTile
+            href="/training"
+            icon={<TrainingLibraryIcon />}
+            eyebrow="Training"
+            title="Refresh your training"
+            body="Short refreshers on dementia care, mobility, post-surgery, and more."
+            tone="warm"
+            cta="Open library →"
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <ActionTile
+            href="/volunteers"
+            icon={<CommunityIcon />}
+            eyebrow="Community"
+            title="Meet other volunteers"
+            body="See other HelpingHand volunteers in your neighborhood and beyond."
+            tone="warm"
+            cta="Browse community →"
+          />
+        </StaggerItem>
+      </Stagger>
+
       {/* Stats */}
       <Stagger className="grid sm:grid-cols-3 gap-5">
         <StaggerItem>
@@ -446,7 +550,7 @@ function VolunteerFullProfile({ volunteer }: { volunteer: Volunteer }) {
 
       {/* Tabs */}
       <Reveal delay={0.05}>
-        <div className="card-elevated">
+        <div ref={tabsRef} className="card-elevated scroll-mt-24">
           <div className="inline-flex bg-brand-50 border border-brand-100 rounded-full p-1 mb-6">
             <TabButton active={tab === 'notifications'} onClick={() => setTab('notifications')}>
               Notifications {unreadCount > 0 && (
@@ -801,6 +905,131 @@ function EmptyState({ message }: { message: string }) {
 }
 
 /* shared helpers */
+
+interface ActionTileProps {
+  icon: React.ReactNode;
+  eyebrow: string;
+  title: string;
+  body: string;
+  href?: string;
+  onClick?: () => void;
+  tone?: 'brand' | 'warm';
+  badge?: string;
+  badgeTone?: 'brand' | 'warm';
+  cta?: string;
+}
+
+function ActionTile({
+  href, onClick, icon, eyebrow, title, body, tone = 'brand', badge, badgeTone = 'warm', cta = 'Open →',
+}: ActionTileProps) {
+  const accent = tone === 'warm'
+    ? 'from-warm-100 to-warm-50 border-warm-200'
+    : 'from-brand-50 to-white border-brand-100';
+  const iconWrap = tone === 'warm'
+    ? 'bg-gradient-to-br from-warm-200 to-warm-300 text-brand-900'
+    : 'bg-gradient-to-br from-brand-100 to-brand-200 text-brand-800';
+  const badgeBg = badgeTone === 'brand' ? 'bg-brand-700' : 'bg-warm-500';
+
+  const cardClasses = `relative block h-full w-full text-left bg-gradient-to-br ${accent} border rounded-3xl p-6 shadow-soft hover:shadow-lift transition`;
+
+  const inner = (
+    <>
+      {badge && (
+        <span className={`absolute top-4 right-4 inline-flex items-center justify-center min-w-[28px] h-7 px-2.5 rounded-full ${badgeBg} text-white text-xs font-semibold shadow-soft`}>
+          {badge}
+        </span>
+      )}
+      <div className={`w-12 h-12 rounded-2xl ${iconWrap} flex items-center justify-center mb-4 shadow-soft`}>
+        {icon}
+      </div>
+      <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">{eyebrow}</p>
+      <h3 className="font-display text-lg font-semibold text-ink-900 mt-1 mb-2 leading-tight">{title}</h3>
+      <p className="text-sm text-ink-700 leading-relaxed">{body}</p>
+      <span className="inline-flex items-center gap-1.5 text-brand-800 font-semibold mt-4 text-sm">{cta}</span>
+    </>
+  );
+
+  return (
+    <motion.div whileHover={{ y: -6 }} className="h-full">
+      {href ? (
+        <Link href={href} className={cardClasses}>{inner}</Link>
+      ) : (
+        <button type="button" onClick={onClick} className={cardClasses}>{inner}</button>
+      )}
+    </motion.div>
+  );
+}
+
+function RequestVolunteerIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M19 8v6M22 11h-6" />
+    </svg>
+  );
+}
+function PreferencesIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="4" y1="21" x2="4" y2="14" />
+      <line x1="4" y1="10" x2="4" y2="3" />
+      <line x1="12" y1="21" x2="12" y2="12" />
+      <line x1="12" y1="8" x2="12" y2="3" />
+      <line x1="20" y1="21" x2="20" y2="16" />
+      <line x1="20" y1="12" x2="20" y2="3" />
+      <line x1="1" y1="14" x2="7" y2="14" />
+      <line x1="9" y1="8" x2="15" y2="8" />
+      <line x1="17" y1="16" x2="23" y2="16" />
+    </svg>
+  );
+}
+function TrackRequestsIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
+  );
+}
+function MedicalIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+      <line x1="12" y1="9" x2="12" y2="14" />
+      <line x1="9.5" y1="11.5" x2="14.5" y2="11.5" />
+    </svg>
+  );
+}
+
+function PatientHistoryIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  );
+}
+function TrainingLibraryIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+      <line x1="9" y1="7" x2="16" y2="7" />
+      <line x1="9" y1="11" x2="16" y2="11" />
+    </svg>
+  );
+}
+function CommunityIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="9" cy="7" r="4" />
+      <circle cx="17" cy="11" r="3" />
+      <path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" />
+      <path d="M17 17a3 3 0 013 3v1" />
+    </svg>
+  );
+}
 
 function DashCard({
   href, eyebrow, title, body, cta, variant = 'brand', badge, badgeTone = 'warm',
