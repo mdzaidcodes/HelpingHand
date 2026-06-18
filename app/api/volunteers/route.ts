@@ -14,6 +14,8 @@ const noSkills: Record<CareSkill, boolean> = {
   personalCare: false,
   dementiaCare: false,
   postSurgeryCare: false,
+  housekeeping: false,
+  transportation: false,
 };
 
 export async function POST(req: Request) {

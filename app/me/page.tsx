@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSession } from '@/components/auth/SessionProvider';
@@ -16,6 +16,8 @@ import {
 } from '@/lib/training';
 import { SKILL_LABELS } from '@/lib/types';
 import type { Patient, Volunteer, CareSkill, CareRequest, RequestStatus } from '@/lib/types';
+import { ScheduleVisual, deriveSchedule } from '@/components/ScheduleVisual';
+import { PatientDetailsCard } from '@/components/PatientDetailsCard';
 
 export default function DashboardPage() {
   const { session, ready } = useSession();
@@ -59,7 +61,7 @@ export default function DashboardPage() {
    ===================================================== */
 
 function PatientView({ session, patient }: { session: { userId: string; name: string }; patient: Patient }) {
-  const [requestCounts, setRequestCounts] = useState<{ pending: number; accepted: number }>({ pending: 0, accepted: 0 });
+  const [requests, setRequests] = useState<CareRequest[]>([]);
 
   useEffect(() => {
     let alive = true;
@@ -67,19 +69,23 @@ function PatientView({ session, patient }: { session: { userId: string; name: st
       try {
         const res = await fetch(`/api/requests?patientId=${session.userId}`, { cache: 'no-store' });
         const j: { requests?: CareRequest[] } = await res.json();
-        if (alive) {
-          const reqs = j.requests ?? [];
-          setRequestCounts({
-            pending: reqs.filter(r => r.status === 'pending').length,
-            accepted: reqs.filter(r => r.status === 'accepted').length,
-          });
-        }
+        if (alive) setRequests(j.requests ?? []);
       } catch { /* ignore */ }
     }
     load();
-    const id = setInterval(load, 10000);
-    return () => { alive = false; clearInterval(id); };
+    const id = setInterval(load, 6000);
+    const onVisible = () => { if (document.visibilityState === 'visible') load(); };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      alive = false;
+      clearInterval(id);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
   }, [session.userId]);
+
+  const accepted = requests.filter(r => r.status === 'accepted');
+  const declined = requests.filter(r => r.status === 'declined');
+  const pending = requests.filter(r => r.status === 'pending');
 
   const prefsSet = !!patient.preferences && (
     !!patient.preferences.language ||
@@ -92,12 +98,18 @@ function PatientView({ session, patient }: { session: { userId: string; name: st
     || patient.health.emergencyContacts.length > 0
     || patient.health.medicalContacts.length > 0;
 
-  const hasAnyRequest = requestCounts.pending + requestCounts.accepted > 0;
-  const requestsBody = requestCounts.accepted > 0
-    ? `${requestCounts.accepted} volunteer${requestCounts.accepted === 1 ? '' : 's'} accepted${requestCounts.pending > 0 ? `, ${requestCounts.pending} still pending` : ''}.`
-    : requestCounts.pending > 0
-      ? `${requestCounts.pending} awaiting response.`
+  const hasAnyRequest = pending.length + accepted.length > 0;
+  const requestsBody = accepted.length > 0
+    ? `${accepted.length} volunteer${accepted.length === 1 ? '' : 's'} accepted${pending.length > 0 ? `, ${pending.length} still pending` : ''}.`
+    : pending.length > 0
+      ? `${pending.length} awaiting response.`
       : 'When you reach out to a volunteer, you can follow the response here.';
+  const badgeText = accepted.length > 0
+    ? `${accepted.length} accepted`
+    : pending.length > 0
+      ? `${pending.length} pending`
+      : undefined;
+  const badgeTone: 'brand' | 'warm' = accepted.length > 0 ? 'brand' : 'warm';
 
   return (
     <section>
@@ -111,6 +123,9 @@ function PatientView({ session, patient }: { session: { userId: string; name: st
         </div>
       </Reveal>
 
+      <AcceptedBanner accepted={accepted} />
+      <DeclinedBanner declined={declined} />
+
       <Stagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
         <StaggerItem>
           <DashCard href="/volunteers" eyebrow="Care matches" title="Meet volunteers chosen for you" body="See volunteers ranked by your preferences, on a map of Abu Dhabi." cta="View matches" />
@@ -122,8 +137,9 @@ function PatientView({ session, patient }: { session: { userId: string; name: st
             title={hasAnyRequest ? 'Track your requests' : 'No requests yet'}
             body={requestsBody}
             cta={hasAnyRequest ? 'View requests' : 'Browse volunteers'}
-            variant="warm"
-            badge={requestCounts.pending > 0 ? `${requestCounts.pending} pending` : undefined}
+            variant={accepted.length > 0 ? 'brand' : 'warm'}
+            badge={badgeText}
+            badgeTone={badgeTone}
           />
         </StaggerItem>
         <StaggerItem>
@@ -291,9 +307,18 @@ function lastVisitLabel(iso: string): string {
   return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }
 
+interface IncomingToast {
+  id: string;
+  patientName: string;
+  patientNeighborhood: string;
+}
+
 function VolunteerFullProfile({ volunteer }: { volunteer: Volunteer }) {
   const [tab, setTab] = useState<'history' | 'notifications'>('notifications');
   const [requests, setRequests] = useState<CareRequest[]>([]);
+  const [toasts, setToasts] = useState<IncomingToast[]>([]);
+  const seenIdsRef = useRef<Set<string>>(new Set());
+  const firstLoadRef = useRef(false);
 
   // Live fetch of requests for this volunteer, with polling for near-real-time updates.
   useEffect(() => {
@@ -308,7 +333,7 @@ function VolunteerFullProfile({ volunteer }: { volunteer: Volunteer }) {
       }
     }
     load();
-    const id = setInterval(load, 8000);
+    const id = setInterval(load, 5000);
     const onVisible = () => { if (document.visibilityState === 'visible') load(); };
     document.addEventListener('visibilitychange', onVisible);
     return () => {
@@ -317,6 +342,36 @@ function VolunteerFullProfile({ volunteer }: { volunteer: Volunteer }) {
       document.removeEventListener('visibilitychange', onVisible);
     };
   }, [volunteer.id]);
+
+  // Detect newly-arrived pending requests and fire a live toast for each.
+  useEffect(() => {
+    if (!firstLoadRef.current) {
+      // First load — record everything we already have without flashing toasts.
+      seenIdsRef.current = new Set(requests.map(r => r.id));
+      firstLoadRef.current = true;
+      return;
+    }
+    const newPending = requests.filter(
+      r => !seenIdsRef.current.has(r.id) && r.status === 'pending'
+    );
+    if (newPending.length > 0) {
+      setToasts(prev => [
+        ...prev,
+        ...newPending.map(r => ({
+          id: r.id,
+          patientName: r.patientName,
+          patientNeighborhood: r.patientNeighborhood,
+        })),
+      ]);
+      // Auto-dismiss each after 7s.
+      for (const r of newPending) {
+        setTimeout(() => {
+          setToasts(prev => prev.filter(t => t.id !== r.id));
+        }, 7000);
+      }
+    }
+    for (const r of requests) seenIdsRef.current.add(r.id);
+  }, [requests]);
 
   async function updateRequest(id: string, patch: Partial<Pick<CareRequest, 'status' | 'unread' | 'responseMessage'>>) {
     // Optimistic update
@@ -340,8 +395,14 @@ function VolunteerFullProfile({ volunteer }: { volunteer: Volunteer }) {
   const activeSkills = (Object.keys(volunteer.skills) as CareSkill[]).filter(s => volunteer.skills[s]);
   const interviewDate = volunteer.interview?.scheduledFor ? new Date(volunteer.interview.scheduledFor) : null;
 
+  function dismissToast(id: string) {
+    setToasts(prev => prev.filter(t => t.id !== id));
+  }
+
   return (
     <section className="space-y-10">
+      <RequestToaster toasts={toasts} onDismiss={dismissToast} />
+
       {/* Hero */}
       <Reveal>
         <div className="card-elevated relative overflow-hidden">
@@ -526,8 +587,26 @@ function RequestRow({
   onSeen: () => void;
 }) {
   const [open, setOpen] = useState(false);
+  const [patient, setPatient] = useState<Patient | null>(null);
+  const [loadingPatient, setLoadingPatient] = useState(false);
   const isPending = request.status === 'pending';
   const chip = statusChip(request.status);
+
+  // Once accepted, fetch the patient's full shared profile so we can display it.
+  useEffect(() => {
+    if (request.status !== 'accepted') return;
+    if (patient) return;
+    let alive = true;
+    setLoadingPatient(true);
+    fetch(`/api/patients/${request.patientId}`, { cache: 'no-store' })
+      .then(r => r.json())
+      .then((j: { patient?: Patient }) => {
+        if (alive) setPatient(j.patient ?? null);
+      })
+      .catch(() => { /* ignore */ })
+      .finally(() => { if (alive) setLoadingPatient(false); });
+    return () => { alive = false; };
+  }, [request.status, request.patientId, patient]);
 
   function toggle() {
     setOpen(v => {
@@ -606,6 +685,32 @@ function RequestRow({
                     : <span className="text-ink-500 italic text-sm">Not specified</span>}
                 </div>
               </DetailField>
+
+              {(() => {
+                const sched = deriveSchedule(request);
+                return sched ? (
+                  <div className="sm:col-span-2">
+                    <ScheduleVisual
+                      schedule={sched}
+                      title={request.status === 'accepted' ? 'Your weekly schedule' : 'Schedule they’re asking for'}
+                      subtitle={request.status === 'accepted'
+                        ? `You'll be helping ${request.patientName.split(' ')[0]} on these days each week.`
+                        : `${request.patientName.split(' ')[0]} is hoping for help on these days.`}
+                    />
+                  </div>
+                ) : null;
+              })()}
+
+              {/* Once accepted, show the patient's full shared profile. */}
+              {request.status === 'accepted' && (
+                <div className="sm:col-span-2">
+                  {patient
+                    ? <PatientDetailsCard patient={patient} />
+                    : loadingPatient
+                      ? <div className="text-ink-500 italic text-center py-4">Loading {request.patientName.split(' ')[0]}&apos;s shared details…</div>
+                      : null}
+                </div>
+              )}
 
               <div className="sm:col-span-2">
                 <div className="text-xs uppercase tracking-wide font-semibold text-ink-500 mb-2">Their message</div>
@@ -698,14 +803,15 @@ function EmptyState({ message }: { message: string }) {
 /* shared helpers */
 
 function DashCard({
-  href, eyebrow, title, body, cta, variant = 'brand', badge,
-}: { href: string; eyebrow: string; title: string; body: string; cta: string; variant?: 'brand' | 'warm'; badge?: string }) {
+  href, eyebrow, title, body, cta, variant = 'brand', badge, badgeTone = 'warm',
+}: { href: string; eyebrow: string; title: string; body: string; cta: string; variant?: 'brand' | 'warm'; badge?: string; badgeTone?: 'brand' | 'warm' }) {
   const accent = variant === 'warm' ? 'from-warm-100 to-warm-50 border-warm-200' : 'from-brand-50 to-white border-brand-100';
+  const badgeBg = badgeTone === 'brand' ? 'bg-brand-700' : 'bg-warm-500';
   return (
     <motion.div whileHover={{ y: -6 }} className="h-full">
       <Link href={href} className={`block h-full bg-gradient-to-br ${accent} border rounded-3xl p-7 shadow-soft hover:shadow-lift transition relative`}>
         {badge && (
-          <span className="absolute top-4 right-4 inline-flex items-center justify-center min-w-[28px] h-7 px-2 rounded-full bg-warm-500 text-white text-xs font-semibold shadow-soft">
+          <span className={`absolute top-4 right-4 inline-flex items-center justify-center min-w-[28px] h-7 px-2.5 rounded-full ${badgeBg} text-white text-xs font-semibold shadow-soft`}>
             {badge}
           </span>
         )}
@@ -714,6 +820,130 @@ function DashCard({
         <p className="text-ink-700 leading-relaxed">{body}</p>
         <span className="inline-flex items-center gap-1.5 text-brand-800 font-semibold mt-4">{cta} →</span>
       </Link>
+    </motion.div>
+  );
+}
+
+function RequestToaster({
+  toasts, onDismiss,
+}: {
+  toasts: IncomingToast[];
+  onDismiss: (id: string) => void;
+}) {
+  return (
+    <div className="fixed top-24 right-4 sm:right-6 z-50 flex flex-col gap-3 pointer-events-none">
+      <AnimatePresence>
+        {toasts.map(t => (
+          <motion.div
+            key={t.id}
+            layout
+            initial={{ opacity: 0, x: 80, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 80, scale: 0.95 }}
+            transition={{ duration: 0.35, ease: EASE_OUT }}
+            className="pointer-events-auto w-[320px] bg-white border border-brand-200 shadow-lift rounded-2xl p-4 flex items-start gap-3"
+          >
+            <span className="relative">
+              <Avatar name={t.patientName} size="sm" />
+              <motion.span
+                className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-warm-500 border-2 border-white"
+                animate={{ scale: [1, 1.25, 1] }}
+                transition={{ repeat: Infinity, duration: 1.4 }}
+              />
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">New request</p>
+              <p className="font-semibold text-ink-900 truncate">{t.patientName}</p>
+              <p className="text-sm text-ink-600 truncate">{t.patientNeighborhood}</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => onDismiss(t.id)}
+              aria-label="Dismiss"
+              className="text-ink-500 hover:text-ink-900 text-lg leading-none"
+            >
+              ×
+            </button>
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+function AcceptedBanner({ accepted }: { accepted: CareRequest[] }) {
+  if (accepted.length === 0) return null;
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: EASE_OUT }}
+      className="mb-8 rounded-3xl border border-brand-200 bg-gradient-to-br from-brand-50 to-white shadow-soft overflow-hidden"
+    >
+      <div className="flex items-center gap-3 px-6 py-4 border-b border-brand-100 bg-brand-100/40">
+        <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-700 text-white text-base shadow-soft">✓</span>
+        <div className="flex-1">
+          <h2 className="font-display text-xl font-semibold text-brand-900 leading-tight">
+            {accepted.length === 1
+              ? 'A volunteer has accepted your request.'
+              : `${accepted.length} volunteers have accepted your requests.`}
+          </h2>
+          <p className="text-brand-800 text-sm">They&apos;ll reach out to you soon.</p>
+        </div>
+      </div>
+      <ul className="divide-y divide-brand-100">
+        <AnimatePresence initial={false}>
+          {accepted.map((r, i) => (
+            <motion.li
+              key={r.id}
+              layout
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 10 }}
+              transition={{ delay: Math.min(i * 0.04, 0.2), duration: 0.3, ease: EASE_OUT }}
+            >
+              <Link
+                href="/me/requests"
+                className="flex items-center gap-4 px-6 py-4 hover:bg-brand-50 transition"
+              >
+                <Avatar name={r.volunteerName} size="md" />
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-ink-900">
+                    {r.volunteerName}
+                    <span className="text-ink-600 font-normal"> accepted your request</span>
+                  </p>
+                  <p className="text-ink-500 text-sm">
+                    {r.volunteerNeighborhood}
+                    {r.respondedAt && ` · ${new Date(r.respondedAt).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}`}
+                  </p>
+                </div>
+                <span className="text-brand-700 font-medium whitespace-nowrap text-sm">View →</span>
+              </Link>
+            </motion.li>
+          ))}
+        </AnimatePresence>
+      </ul>
+    </motion.div>
+  );
+}
+
+function DeclinedBanner({ declined }: { declined: CareRequest[] }) {
+  // Only surface declined responses gently — small section under the celebratory banner.
+  if (declined.length === 0) return null;
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: -6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: EASE_OUT }}
+      className="mb-8 rounded-2xl border border-stone-200 bg-stone-50/60 px-5 py-3 flex items-center gap-3 text-sm text-ink-700"
+    >
+      <span className="text-ink-500">·</span>
+      {declined.length === 1
+        ? `${declined[0].volunteerName} is unable to take on new families right now.`
+        : `${declined.length} volunteers are unavailable right now.`}
+      <Link href="/me/requests" className="text-brand-700 hover:underline font-medium ml-auto">View →</Link>
     </motion.div>
   );
 }

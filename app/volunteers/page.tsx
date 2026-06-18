@@ -3,7 +3,12 @@ import { readVolunteers } from '@/lib/store';
 import { preferencesFromQuery, rankVolunteers } from '@/lib/match';
 import { Reveal } from '@/components/motion/Reveal';
 import { VolunteersView } from '@/components/VolunteersView';
-import { SKILL_LABELS, type CareSkill } from '@/lib/types';
+import {
+  SKILL_LABELS,
+  readPreferredLanguages,
+  readPreferredNationalities,
+  type CareSkill,
+} from '@/lib/types';
 import { USER_LOCATION } from '@/lib/geo';
 
 export const dynamic = 'force-dynamic';
@@ -19,19 +24,22 @@ export default async function VolunteersPage({ searchParams }: PageProps) {
   const ready = volunteers.filter(v => v.interview?.status === 'completed' && v.rating > 0);
   const ranked = rankVolunteers(ready, prefs);
 
+  const wantedLangs = readPreferredLanguages(prefs);
+  const wantedNats = readPreferredNationalities(prefs);
+
   const hasPrefs =
-    !!prefs.language ||
+    wantedLangs.length > 0 ||
     (prefs.gender && prefs.gender !== 'Any') ||
-    !!prefs.nationality ||
+    wantedNats.length > 0 ||
     (prefs.availability && prefs.availability !== 'Any') ||
     Object.values(prefs.needs).some(Boolean);
 
   const activePrefs: string[] = [];
-  if (prefs.language) activePrefs.push(prefs.language);
+  for (const l of wantedLangs) activePrefs.push(l);
   if (prefs.gender && prefs.gender !== 'Any') {
     activePrefs.push(prefs.gender === 'Female' ? 'A woman' : 'A man');
   }
-  if (prefs.nationality) activePrefs.push(prefs.nationality);
+  for (const n of wantedNats) activePrefs.push(n);
   if (prefs.availability && prefs.availability !== 'Any') {
     activePrefs.push(prefs.availability === 'Hourly' ? 'A few hours a day' : 'Living with us');
   }

@@ -25,6 +25,8 @@ const noSkills: Record<CareSkill, boolean> = {
   personalCare: false,
   dementiaCare: false,
   postSurgeryCare: false,
+  housekeeping: false,
+  transportation: false,
 };
 
 interface Form {
@@ -77,21 +79,31 @@ export default function VolunteerSignupPage() {
     setForm(f => ({ ...f, certifications: f.certifications.filter(x => x !== c) }));
   }
 
+  function withDefaults(f: Form): Form {
+    const stamp = Date.now().toString(36);
+    const name = f.name.trim() || 'Guest Volunteer';
+    const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)
+      ? f.email.trim()
+      : `volunteer-${stamp}@helpinghand.example`;
+    const languages = f.languages.length > 0 ? f.languages : ['English'];
+    return { ...f, name, email, languages };
+  }
+
   function next() {
     setError(null);
-    if (!form.name.trim()) { setError('Please tell us your name.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) { setError('Please enter a valid email.'); return; }
-    if (form.languages.length === 0) { setError('Please choose at least one language you speak.'); return; }
+    setForm(withDefaults);
     setStep(2);
   }
 
   async function submit() {
     setSubmitting(true); setError(null);
+    const filled = withDefaults(form);
+    setForm(filled);
     try {
       const res = await fetch('/api/volunteers', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(filled),
       });
       const json = await res.json();
       if (!res.ok) {
@@ -108,7 +120,7 @@ export default function VolunteerSignupPage() {
   }
 
   return (
-    <section className="max-w-3xl mx-auto">
+    <section className="max-w-6xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mb-8">
         <span className="chip-warm mb-4 inline-flex">Step {step} of 2 · Volunteer</span>
         <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-900 leading-tight">
@@ -126,13 +138,13 @@ export default function VolunteerSignupPage() {
       <AnimatePresence mode="wait">
         {step === 1 ? (
           <motion.div key="s1" variants={stepVariants} initial="hidden" animate="show" exit="exit" className="card space-y-6">
-            <Field label="Your full name">
-              <input className="input" placeholder="e.g. Maria Santos" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
-            </Field>
-            <Field label="Your email">
-              <input className="input" type="email" placeholder="you@example.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
-            </Field>
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-6">
+              <Field label="Your full name">
+                <input className="input" placeholder="e.g. Maria Santos" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+              </Field>
+              <Field label="Your email">
+                <input className="input" type="email" placeholder="you@example.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+              </Field>
               <Field label="Your age (optional)">
                 <input className="input" type="number" min={18} value={form.age ?? ''} onChange={e => setForm(f => ({ ...f, age: e.target.value ? Number(e.target.value) : undefined }))} />
               </Field>
@@ -141,19 +153,19 @@ export default function VolunteerSignupPage() {
                   {NEIGHBORHOODS.map(n => <option key={n}>{n}</option>)}
                 </select>
               </Field>
+              <Field label="You are">
+                <div className="flex gap-3">
+                  {(['Female', 'Male'] as const).map(g => (
+                    <PillButton key={g} label={g === 'Female' ? 'A woman' : 'A man'} active={form.gender === g} onClick={() => setForm(f => ({ ...f, gender: g }))} />
+                  ))}
+                </div>
+              </Field>
+              <Field label="Your nationality">
+                <select className="select" value={form.nationality} onChange={e => setForm(f => ({ ...f, nationality: e.target.value }))}>
+                  {COMMON_NATIONALITIES.map(n => <option key={n}>{n}</option>)}
+                </select>
+              </Field>
             </div>
-            <Field label="You are">
-              <div className="flex gap-3">
-                {(['Female', 'Male'] as const).map(g => (
-                  <PillButton key={g} label={g === 'Female' ? 'A woman' : 'A man'} active={form.gender === g} onClick={() => setForm(f => ({ ...f, gender: g }))} />
-                ))}
-              </div>
-            </Field>
-            <Field label="Your nationality">
-              <select className="select" value={form.nationality} onChange={e => setForm(f => ({ ...f, nationality: e.target.value }))}>
-                {COMMON_NATIONALITIES.map(n => <option key={n}>{n}</option>)}
-              </select>
-            </Field>
             <Field label="Languages you speak">
               <div className="flex flex-wrap gap-2">
                 {COMMON_LANGUAGES.map(l => (
@@ -173,16 +185,18 @@ export default function VolunteerSignupPage() {
         ) : (
           <motion.div key="s2" variants={stepVariants} initial="hidden" animate="show" exit="exit" className="space-y-6">
             <div className="card space-y-6">
-              <Field label="Years of experience">
-                <input className="input" type="number" min={0} max={60} value={form.yearsExperience} onChange={e => setForm(f => ({ ...f, yearsExperience: Number(e.target.value || 0) }))} />
-              </Field>
-              <Field label="Availability">
-                <div className="flex flex-wrap gap-3">
-                  {(['Hourly', 'Live-in', 'Both'] as const).map(a => (
-                    <PillButton key={a} label={a === 'Hourly' ? 'A few hours a day' : a === 'Live-in' ? 'Living with the family' : 'Open to both'} active={form.availability === a} onClick={() => setForm(f => ({ ...f, availability: a }))} />
-                  ))}
-                </div>
-              </Field>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Field label="Years of experience">
+                  <input className="input" type="number" min={0} max={60} value={form.yearsExperience} onChange={e => setForm(f => ({ ...f, yearsExperience: Number(e.target.value || 0) }))} />
+                </Field>
+                <Field label="Availability">
+                  <div className="flex flex-wrap gap-3">
+                    {(['Hourly', 'Live-in', 'Both'] as const).map(a => (
+                      <PillButton key={a} label={a === 'Hourly' ? 'A few hours a day' : a === 'Live-in' ? 'Living with the family' : 'Open to both'} active={form.availability === a} onClick={() => setForm(f => ({ ...f, availability: a }))} />
+                    ))}
+                  </div>
+                </Field>
+              </div>
               <Field label="A short note about you">
                 <textarea className="input min-h-[110px]" placeholder="What kind of presence do you bring? What do families love about working with you?" value={form.bio} onChange={e => setForm(f => ({ ...f, bio: e.target.value }))} />
               </Field>
@@ -190,7 +204,7 @@ export default function VolunteerSignupPage() {
 
             <div className="card space-y-4">
               <h2 className="font-display text-2xl font-semibold text-ink-900">What you can help with</h2>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {ALL_SKILLS.map(s => (
                   <motion.label
                     key={s}

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function SignupChooserPage() {
   return (
-    <section className="max-w-3xl mx-auto">
+    <section className="max-w-6xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}

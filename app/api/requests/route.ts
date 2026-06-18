@@ -7,7 +7,15 @@ import {
   findRequestsForVolunteer,
   upsertRequest,
 } from '@/lib/store';
-import type { CareRequest, CareSkill } from '@/lib/types';
+import {
+  DAYS,
+  DEFAULT_SCHEDULE,
+  scheduleTotal,
+  type CareRequest,
+  type CareSkill,
+  type DayKey,
+  type WeekSchedule,
+} from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,6 +53,31 @@ export async function POST(req: Request) {
   const requestedAvailability = body.requestedAvailability === 'Live-in' || body.requestedAvailability === 'Both'
     ? body.requestedAvailability
     : (patient.preferences.availability && patient.preferences.availability !== 'Any' ? patient.preferences.availability : 'Hourly');
+  // Normalise schedule. For Live-in requests we don't carry one. Otherwise we
+  // take the patient's provided schedule (clamped to sensible bounds) or fall
+  // back to DEFAULT_SCHEDULE so an empty-submit still produces something usable.
+  let schedule: WeekSchedule | undefined;
+  if (requestedAvailability !== 'Live-in') {
+    const incoming = body.schedule;
+    if (incoming && typeof incoming === 'object') {
+      const normalised: WeekSchedule = { Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0, Sun: 0 };
+      for (const day of DAYS) {
+        const raw = Number(incoming[day]);
+        normalised[day] = Number.isFinite(raw) ? Math.max(0, Math.min(12, raw)) : 0;
+      }
+      schedule = scheduleTotal(normalised) > 0 ? normalised : { ...DEFAULT_SCHEDULE };
+    } else {
+      schedule = { ...DEFAULT_SCHEDULE };
+    }
+  }
+
+  const requestedHoursPerWeek = requestedAvailability === 'Live-in'
+    ? undefined
+    : schedule
+      ? scheduleTotal(schedule)
+      : (typeof body.requestedHoursPerWeek === 'number' && body.requestedHoursPerWeek > 0
+          ? Math.min(60, Math.round(body.requestedHoursPerWeek))
+          : 8);
 
   const record: CareRequest = {
     id: randomUUID(),
@@ -62,7 +95,11 @@ export async function POST(req: Request) {
     message: typeof body.message === 'string' ? body.message.trim() : '',
     requestedNeeds,
     requestedAvailability,
-    preferredLanguage: patient.preferences.language,
+    requestedHoursPerWeek,
+    schedule,
+    preferredLanguage: (patient.preferences.languages && patient.preferences.languages.length > 0)
+      ? patient.preferences.languages.join(', ')
+      : patient.preferences.language,
     status: 'pending',
     createdAt: new Date().toISOString(),
     unread: true,

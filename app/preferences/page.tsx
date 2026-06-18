@@ -7,9 +7,11 @@ import { EASE_OUT } from '@/lib/motion-ease';
 import { LANGUAGES, NATIONALITIES } from '@/lib/options';
 import { preferencesToQuery } from '@/lib/match';
 import { useSession } from '@/components/auth/SessionProvider';
+import { MultiSelectChips } from '@/components/MultiSelectChips';
 import {
   EMPTY_PREFERENCES,
   SKILL_LABELS,
+  SKILL_DESCRIPTIONS,
   type Preferences,
   type CareSkill,
   type Gender,
@@ -71,7 +73,7 @@ export default function PreferencesPage() {
 
   return (
     <motion.section
-      className="max-w-3xl mx-auto"
+      className="max-w-6xl mx-auto"
       initial="hidden"
       animate="show"
       variants={container}
@@ -93,53 +95,59 @@ export default function PreferencesPage() {
             <p className="text-ink-600 mt-1">The qualities that make you feel most at ease.</p>
           </div>
 
-          <Field label="A language you&apos;re comfortable in">
-            <select
-              className="select"
-              value={prefs.language ?? ''}
-              onChange={e => setPrefs(p => ({ ...p, language: e.target.value || undefined }))}
+          <div className="space-y-7">
+            <Field
+              label="Languages you'd be comfortable with"
+              helper="Type to search, click to add. We'll match volunteers who speak any of these."
             >
-              <option value="">No preference</option>
-              {ALL_LANGUAGES.map(l => <option key={l} value={l}>{l}</option>)}
-            </select>
-          </Field>
+              <MultiSelectChips
+                options={ALL_LANGUAGES}
+                selected={prefs.languages ?? []}
+                onChange={langs => setPrefs(p => ({ ...p, languages: langs }))}
+                placeholder="Search languages…"
+              />
+            </Field>
 
-          <Field label="Would you prefer a man or a woman?">
-            <div className="flex flex-wrap gap-3">
-              {(['Any', 'Female', 'Male'] as const).map(g => (
-                <PillButton
-                  key={g}
-                  label={g === 'Any' ? 'Either is fine' : g === 'Female' ? 'A woman' : 'A man'}
-                  active={(prefs.gender ?? 'Any') === g}
-                  onClick={() => setPrefs(p => ({ ...p, gender: g as Gender | 'Any' }))}
-                />
-              ))}
-            </div>
-          </Field>
-
-          <Field label="Is there a nationality or background you prefer?">
-            <select
-              className="select"
-              value={prefs.nationality ?? ''}
-              onChange={e => setPrefs(p => ({ ...p, nationality: e.target.value || undefined }))}
+            <Field
+              label="Backgrounds or nationalities you'd prefer"
+              helper="Type to search, click to add. Leave blank if it doesn't matter."
             >
-              <option value="">No preference</option>
-              {ALL_NATIONALITIES.map(n => <option key={n} value={n}>{n}</option>)}
-            </select>
-          </Field>
+              <MultiSelectChips
+                options={ALL_NATIONALITIES}
+                selected={prefs.nationalities ?? []}
+                onChange={nats => setPrefs(p => ({ ...p, nationalities: nats }))}
+                placeholder="Search nationalities…"
+              />
+            </Field>
 
-          <Field label="How often would you like company?">
-            <div className="flex flex-wrap gap-3">
-              {(['Any', 'Hourly', 'Live-in'] as const).map(a => (
-                <PillButton
-                  key={a}
-                  label={a === 'Any' ? 'Open to both' : a === 'Hourly' ? 'A few hours a day' : 'Living with us'}
-                  active={(prefs.availability ?? 'Any') === a}
-                  onClick={() => setPrefs(p => ({ ...p, availability: a as Availability | 'Any' }))}
-                />
-              ))}
+            <div className="grid md:grid-cols-2 gap-7">
+              <Field label="Would you prefer a man or a woman?">
+                <div className="flex flex-wrap gap-3">
+                  {(['Any', 'Female', 'Male'] as const).map(g => (
+                    <PillButton
+                      key={g}
+                      label={g === 'Any' ? 'Either is fine' : g === 'Female' ? 'A woman' : 'A man'}
+                      active={(prefs.gender ?? 'Any') === g}
+                      onClick={() => setPrefs(p => ({ ...p, gender: g as Gender | 'Any' }))}
+                    />
+                  ))}
+                </div>
+              </Field>
+
+              <Field label="How often would you like company?">
+                <div className="flex flex-wrap gap-3">
+                  {(['Any', 'Hourly', 'Live-in'] as const).map(a => (
+                    <PillButton
+                      key={a}
+                      label={a === 'Any' ? 'Open to both' : a === 'Hourly' ? 'A few hours a day' : 'Living with us'}
+                      active={(prefs.availability ?? 'Any') === a}
+                      onClick={() => setPrefs(p => ({ ...p, availability: a as Availability | 'Any' }))}
+                    />
+                  ))}
+                </div>
+              </Field>
             </div>
-          </Field>
+          </div>
         </motion.div>
 
         <motion.div variants={sectionVariants} className="card space-y-5">
@@ -147,13 +155,13 @@ export default function PreferencesPage() {
             <h2 className="font-display text-2xl font-semibold text-ink-900">What support would help most?</h2>
             <p className="text-ink-600 mt-1">Choose anything that applies — no need to choose them all.</p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {ALL_SKILLS.map(s => (
               <motion.label
                 key={s}
                 whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.985 }}
-                className={`flex items-center gap-3 p-4 rounded-2xl border cursor-pointer transition-all duration-200 ${
+                whileTap={{ scale: 0.99 }}
+                className={`flex items-start gap-3 p-5 rounded-2xl border cursor-pointer transition-all duration-200 ${
                   prefs.needs[s]
                     ? 'border-brand-400 bg-brand-50 shadow-soft'
                     : 'border-brand-100 bg-white hover:border-brand-200'
@@ -161,11 +169,18 @@ export default function PreferencesPage() {
               >
                 <input
                   type="checkbox"
-                  className="w-5 h-5 accent-brand-700"
+                  className="w-5 h-5 accent-brand-700 mt-0.5 shrink-0"
                   checked={!!prefs.needs[s]}
                   onChange={() => toggleNeed(s)}
                 />
-                <span className="font-medium text-ink-900">{SKILL_LABELS[s]}</span>
+                <div className="flex-1 min-w-0">
+                  <span className="font-display font-semibold text-ink-900 text-lg block leading-tight">
+                    {SKILL_LABELS[s]}
+                  </span>
+                  <p className="text-sm text-ink-600 mt-1.5 leading-relaxed">
+                    {SKILL_DESCRIPTIONS[s]}
+                  </p>
+                </div>
               </motion.label>
             ))}
           </div>
@@ -194,14 +209,16 @@ export default function PreferencesPage() {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, helper, children }: { label: string; helper?: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block font-medium text-ink-900 mb-2.5">{label}</label>
+      <label className="block font-medium text-ink-900 mb-1.5">{label}</label>
+      {helper && <p className="text-sm text-ink-500 mb-2.5">{helper}</p>}
       {children}
     </div>
   );
 }
+
 
 function PillButton({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (

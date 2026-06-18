@@ -929,5 +929,789 @@
     },
     "volunteerHistory": [],
     "createdAt": "2026-06-17T10:32:28.442Z"
+  },
+  {
+    "id": "pa-demo-001",
+    "email": "demo.patient@helpinghand.example",
+    "name": "Saeed Al-Falasi",
+    "age": 76,
+    "gender": "Male",
+    "nationality": "Emirati",
+    "neighborhood": "Khalidiyah",
+    "city": "Abu Dhabi",
+    "lat": 24.4763,
+    "lng": 54.3705,
+    "preferences": {
+      "language": "Arabic",
+      "gender": "Female",
+      "nationality": "Filipino",
+      "availability": "Hourly",
+      "needs": {
+        "companionship": true,
+        "mealPreparation": true,
+        "mobilitySupport": true
+      }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Type 2 diabetes", "Mild osteoarthritis"],
+      "medications": ["Metformin 500mg (twice daily)", "Vitamin D 1000IU (morning)"],
+      "bloodType": "A+",
+      "notes": "Prefers afternoon visits. Enjoys conversation about old Abu Dhabi.",
+      "emergencyContacts": [
+        { "id": "ec-demo-1", "name": "Mariam Al-Falasi", "relation": "Daughter", "phone": "+971 50 123 0000" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-demo-1", "name": "Dr. Khalid Saleh", "specialty": "Endocrinologist", "clinic": "Cleveland Clinic Abu Dhabi", "phone": "+971 2 659 0200" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [],
+    "createdAt": "2026-06-17T12:00:00.000Z"
+  },
+  {
+    "id": "pa-012",
+    "email": "hamda.alsuwaidi@helpinghand.example",
+    "name": "Hamda Al-Suwaidi",
+    "age": 71,
+    "gender": "Female",
+    "nationality": "Emirati",
+    "neighborhood": "Khalidiyah",
+    "city": "Abu Dhabi",
+    "lat": 24.4755,
+    "lng": 54.3640,
+    "preferences": {
+      "language": "Arabic",
+      "gender": "Female",
+      "nationality": "Lebanese",
+      "availability": "Hourly",
+      "needs": { "companionship": true, "mealPreparation": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Type 2 diabetes", "Mild hypertension"],
+      "medications": ["Lisinopril 10mg (morning)", "Metformin 500mg (twice daily)"],
+      "bloodType": "B+",
+      "notes": "Loves classical Arabic music and afternoon tea on the balcony.",
+      "emergencyContacts": [
+        { "id": "ec-112-1", "name": "Saif Al-Suwaidi", "relation": "Son", "phone": "+971 50 222 7700" },
+        { "id": "ec-112-2", "name": "Layla Al-Suwaidi", "relation": "Daughter", "phone": "+971 55 333 8800" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-112-1", "name": "Dr. Salma Khan", "specialty": "GP", "clinic": "HealthPlus Family Clinic", "phone": "+971 2 446 8888" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-013", "volunteerName": "Reema Khoury", "volunteerNeighborhood": "Al Karamah", "hours": 18.0, "sessions": 8, "startDate": "2026-01-18", "lastVisit": "2026-06-15", "status": "Active" }
+    ],
+    "createdAt": "2026-01-10T00:00:00.000Z"
+  },
+  {
+    "id": "pa-013",
+    "email": "sundar.iyer@helpinghand.example",
+    "name": "Sundar Iyer",
+    "age": 79,
+    "gender": "Male",
+    "nationality": "Indian",
+    "neighborhood": "Al Mushrif",
+    "city": "Abu Dhabi",
+    "lat": 24.4435,
+    "lng": 54.3765,
+    "preferences": {
+      "language": "Tamil",
+      "gender": "Male",
+      "nationality": "Indian",
+      "availability": "Hourly",
+      "needs": { "mobilitySupport": true, "postSurgeryCare": true, "medicationManagement": true }
+    },
+    "health": {
+      "allergies": ["Aspirin"],
+      "conditions": ["Post-hip-surgery (2025)", "Type 2 diabetes"],
+      "medications": ["Metformin 500mg (morning & evening)", "Calcium 600mg (morning)", "Paracetamol as needed"],
+      "bloodType": "A+",
+      "notes": "Cautious on stairs. Loves cricket commentary and tamarind rice.",
+      "emergencyContacts": [
+        { "id": "ec-113-1", "name": "Anand Iyer", "relation": "Son", "phone": "+971 55 678 1100" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-113-1", "name": "Dr. Lakshmi Menon", "specialty": "Orthopaedic surgeon", "clinic": "NMC Specialty Hospital", "phone": "+971 2 633 2255" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-015", "volunteerName": "Karthik Reddy", "volunteerNeighborhood": "Mussafah", "hours": 26.0, "sessions": 11, "startDate": "2025-12-10", "lastVisit": "2026-06-17", "status": "Active" },
+      { "volunteerId": "v-022", "volunteerName": "Priya Iyer", "volunteerNeighborhood": "Al Mushrif", "hours": 20.0, "sessions": 9, "startDate": "2026-01-15", "lastVisit": "2026-06-16", "status": "Active" }
+    ],
+    "createdAt": "2025-11-25T00:00:00.000Z"
+  },
+  {
+    "id": "pa-014",
+    "email": "margaret.walker@helpinghand.example",
+    "name": "Margaret Walker",
+    "age": 73,
+    "gender": "Female",
+    "nationality": "British",
+    "neighborhood": "Saadiyat Island",
+    "city": "Abu Dhabi",
+    "lat": 24.5225,
+    "lng": 54.4515,
+    "preferences": {
+      "language": "English",
+      "gender": "Female",
+      "nationality": "",
+      "availability": "Hourly",
+      "needs": { "companionship": true, "mealPreparation": true }
+    },
+    "health": {
+      "allergies": ["Penicillin"],
+      "conditions": ["Mild arthritis", "Hypertension"],
+      "medications": ["Amlodipine 5mg (morning)"],
+      "bloodType": "O+",
+      "notes": "Independent and active. Family in the UK — values familiar company.",
+      "emergencyContacts": [
+        { "id": "ec-114-1", "name": "Caroline Walker", "relation": "Daughter (UK)", "phone": "+44 7700 900 555" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-114-1", "name": "Dr. Sarah Whitfield", "specialty": "GP", "clinic": "HealthPlus Family Clinic", "phone": "+971 2 446 8888" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-014", "volunteerName": "Jovita Mendoza", "volunteerNeighborhood": "Reem Island", "hours": 22.0, "sessions": 10, "startDate": "2025-12-15", "lastVisit": "2026-06-16", "status": "Active" }
+    ],
+    "createdAt": "2025-11-30T00:00:00.000Z"
+  },
+  {
+    "id": "pa-015",
+    "email": "abdullah.almazrouei@helpinghand.example",
+    "name": "Abdullah Al-Mazrouei",
+    "age": 86,
+    "gender": "Male",
+    "nationality": "Emirati",
+    "neighborhood": "MBZ City",
+    "city": "Abu Dhabi",
+    "lat": 24.4015,
+    "lng": 54.5530,
+    "preferences": {
+      "language": "Arabic",
+      "gender": "Male",
+      "nationality": "Emirati",
+      "availability": "Hourly",
+      "needs": { "mobilitySupport": true, "personalCare": true, "medicationManagement": true }
+    },
+    "health": {
+      "allergies": ["Sulfa drugs"],
+      "conditions": ["Post-stroke (left-side weakness)", "Early-stage dementia", "Hypertension"],
+      "medications": ["Aspirin 75mg (daily)", "Donepezil 5mg (evening)", "Amlodipine 5mg (morning)"],
+      "bloodType": "B+",
+      "notes": "Calmest with traditional Emirati music and the smell of bukhoor.",
+      "emergencyContacts": [
+        { "id": "ec-115-1", "name": "Khalid Al-Mazrouei", "relation": "Son", "phone": "+971 50 911 2211" },
+        { "id": "ec-115-2", "name": "Reem Al-Mazrouei", "relation": "Daughter", "phone": "+971 55 332 7799" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-115-1", "name": "Dr. Fatima Al-Otaibi", "specialty": "Geriatrician", "clinic": "Sheikh Khalifa Medical City", "phone": "+971 2 819 0000" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-024", "volunteerName": "Mohamed Yousef", "volunteerNeighborhood": "Mussafah", "hours": 32.0, "sessions": 14, "startDate": "2025-09-19", "lastVisit": "2026-06-17", "status": "Active" }
+    ],
+    "createdAt": "2025-08-12T00:00:00.000Z"
+  },
+  {
+    "id": "pa-016",
+    "email": "yusuf.ibrahim@helpinghand.example",
+    "name": "Yusuf Ibrahim",
+    "age": 77,
+    "gender": "Male",
+    "nationality": "Egyptian",
+    "neighborhood": "Al Markaziyah",
+    "city": "Abu Dhabi",
+    "lat": 24.4880,
+    "lng": 54.3760,
+    "preferences": {
+      "language": "Arabic",
+      "gender": "Male",
+      "nationality": "Egyptian",
+      "availability": "Hourly",
+      "needs": { "medicationManagement": true, "companionship": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Hypertension", "Type 2 diabetes"],
+      "medications": ["Lisinopril 10mg (morning)", "Metformin 500mg (twice daily)"],
+      "bloodType": "O+",
+      "notes": "Loves backgammon and old Egyptian films.",
+      "emergencyContacts": [
+        { "id": "ec-116-1", "name": "Mona Ibrahim", "relation": "Daughter", "phone": "+971 50 654 3322" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-116-1", "name": "Dr. Mustafa Hamid", "specialty": "Endocrinologist", "clinic": "Burjeel Hospital", "phone": "+971 2 508 5555" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-019", "volunteerName": "Omar Sayed", "volunteerNeighborhood": "Al Markaziyah", "hours": 28.0, "sessions": 12, "startDate": "2025-10-30", "lastVisit": "2026-06-16", "status": "Active" },
+      { "volunteerId": "v-009", "volunteerName": "Ahmed Khalil", "volunteerNeighborhood": "MBZ City", "hours": 18.0, "sessions": 8, "startDate": "2025-04-12", "lastVisit": "2025-08-25", "status": "Completed" }
+    ],
+    "createdAt": "2025-04-05T00:00:00.000Z"
+  },
+  {
+    "id": "pa-017",
+    "email": "ravi.krishnan@helpinghand.example",
+    "name": "Ravi Krishnan",
+    "age": 75,
+    "gender": "Male",
+    "nationality": "Indian",
+    "neighborhood": "Khalifa City",
+    "city": "Abu Dhabi",
+    "lat": 24.4310,
+    "lng": 54.5775,
+    "preferences": {
+      "language": "Tamil",
+      "gender": "Female",
+      "nationality": "Indian",
+      "availability": "Hourly",
+      "needs": { "medicationManagement": true, "companionship": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Type 2 diabetes", "Mild Parkinson's disease"],
+      "medications": ["Levodopa-carbidopa (three times daily)", "Metformin 500mg (twice daily)"],
+      "bloodType": "A-",
+      "notes": "Likes quiet mornings. Prefers visits before lunch.",
+      "emergencyContacts": [
+        { "id": "ec-117-1", "name": "Lakshmi Krishnan", "relation": "Wife", "phone": "+971 50 778 6611" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-117-1", "name": "Dr. Rao Subramanian", "specialty": "Neurologist", "clinic": "Cleveland Clinic Abu Dhabi", "phone": "+971 2 659 0200" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-022", "volunteerName": "Priya Iyer", "volunteerNeighborhood": "Al Mushrif", "hours": 18.0, "sessions": 8, "startDate": "2026-02-08", "lastVisit": "2026-06-15", "status": "Active" }
+    ],
+    "createdAt": "2026-01-22T00:00:00.000Z"
+  },
+  {
+    "id": "pa-018",
+    "email": "helen.whitford@helpinghand.example",
+    "name": "Helen Whitford",
+    "age": 69,
+    "gender": "Female",
+    "nationality": "British",
+    "neighborhood": "Yas Island",
+    "city": "Abu Dhabi",
+    "lat": 24.4855,
+    "lng": 54.6055,
+    "preferences": {
+      "language": "English",
+      "gender": "Female",
+      "nationality": "",
+      "availability": "Live-in",
+      "needs": { "companionship": true, "mealPreparation": true, "mobilitySupport": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Post-shoulder-surgery (2026)", "Mild osteoporosis"],
+      "medications": ["Vitamin D 1000IU (daily)", "Calcium 600mg (morning)"],
+      "bloodType": "AB+",
+      "notes": "Recently widowed. Values steady, warm company.",
+      "emergencyContacts": [
+        { "id": "ec-118-1", "name": "Sophie Whitford", "relation": "Daughter (UK)", "phone": "+44 7700 900 778" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-118-1", "name": "Dr. Sarah Whitfield", "specialty": "GP", "clinic": "HealthPlus Family Clinic", "phone": "+971 2 446 8888" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-018", "volunteerName": "Yvonne Ndegwa", "volunteerNeighborhood": "Al Bateen", "hours": 64.0, "sessions": 18, "startDate": "2026-01-28", "lastVisit": "2026-06-17", "status": "Active" }
+    ],
+    "createdAt": "2026-01-15T00:00:00.000Z"
+  },
+  {
+    "id": "pa-019",
+    "email": "khaled.hijazi@helpinghand.example",
+    "name": "Khaled Hijazi",
+    "age": 81,
+    "gender": "Male",
+    "nationality": "Lebanese",
+    "neighborhood": "Corniche",
+    "city": "Abu Dhabi",
+    "lat": 24.4795,
+    "lng": 54.3460,
+    "preferences": {
+      "language": "Arabic",
+      "gender": "Male",
+      "nationality": "Lebanese",
+      "availability": "Hourly",
+      "needs": { "mobilitySupport": true, "companionship": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Hypertension", "Mild dementia"],
+      "medications": ["Lisinopril 10mg (morning)", "Donepezil 5mg (evening)"],
+      "bloodType": "B+",
+      "notes": "Loves political discussion and old French songs.",
+      "emergencyContacts": [
+        { "id": "ec-119-1", "name": "Marwan Hijazi", "relation": "Son", "phone": "+971 55 234 7700" },
+        { "id": "ec-119-2", "name": "Nadia Hijazi", "relation": "Daughter", "phone": "+971 50 345 8888" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-119-1", "name": "Dr. Hanna Saliba", "specialty": "Neurologist", "clinic": "Cleveland Clinic Abu Dhabi", "phone": "+971 2 659 0200" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-021", "volunteerName": "Hassan Khoury", "volunteerNeighborhood": "Corniche", "hours": 36.0, "sessions": 16, "startDate": "2025-10-10", "lastVisit": "2026-06-17", "status": "Active" }
+    ],
+    "createdAt": "2025-09-22T00:00:00.000Z"
+  },
+  {
+    "id": "pa-020",
+    "email": "nazma.hossain@helpinghand.example",
+    "name": "Nazma Hossain",
+    "age": 74,
+    "gender": "Female",
+    "nationality": "Bangladeshi",
+    "neighborhood": "Reem Island",
+    "city": "Abu Dhabi",
+    "lat": 24.4985,
+    "lng": 54.3960,
+    "preferences": {
+      "language": "Bengali",
+      "gender": "Female",
+      "nationality": "Bangladeshi",
+      "availability": "Hourly",
+      "needs": { "companionship": true, "mealPreparation": true, "medicationManagement": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Type 2 diabetes", "Mild depression"],
+      "medications": ["Metformin 500mg (twice daily)", "Sertraline 50mg (morning)"],
+      "bloodType": "O+",
+      "notes": "Lights up around women her age who speak Bengali.",
+      "emergencyContacts": [
+        { "id": "ec-120-1", "name": "Imran Hossain", "relation": "Son", "phone": "+971 50 446 5500" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-120-1", "name": "Dr. Saima Iqbal", "specialty": "Endocrinologist", "clinic": "Burjeel Hospital", "phone": "+971 2 508 5555" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-017", "volunteerName": "Tanvir Hossain", "volunteerNeighborhood": "Khalifa City", "hours": 24.0, "sessions": 10, "startDate": "2025-11-22", "lastVisit": "2026-06-16", "status": "Active" }
+    ],
+    "createdAt": "2025-10-18T00:00:00.000Z"
+  },
+  {
+    "id": "pa-021",
+    "email": "salwa.mostafa@helpinghand.example",
+    "name": "Salwa Mostafa",
+    "age": 80,
+    "gender": "Female",
+    "nationality": "Egyptian",
+    "neighborhood": "Saadiyat Island",
+    "city": "Abu Dhabi",
+    "lat": 24.5220,
+    "lng": 54.4520,
+    "preferences": {
+      "language": "Arabic",
+      "gender": "Female",
+      "nationality": "Egyptian",
+      "availability": "Hourly",
+      "needs": { "dementiaCare": true, "personalCare": true, "companionship": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Mid-stage dementia", "Hypertension"],
+      "medications": ["Memantine 10mg (twice daily)", "Amlodipine 5mg (morning)"],
+      "bloodType": "A+",
+      "notes": "Calm with familiar Egyptian music. Anxious around new faces.",
+      "emergencyContacts": [
+        { "id": "ec-121-1", "name": "Heba Mostafa", "relation": "Daughter", "phone": "+971 50 998 7711" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-121-1", "name": "Dr. Mona El-Sayed", "specialty": "Neurologist", "clinic": "American Center for Psychiatry", "phone": "+971 2 651 8000" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-027", "volunteerName": "Hala Abdelrahman", "volunteerNeighborhood": "Saadiyat Island", "hours": 38.0, "sessions": 16, "startDate": "2025-10-22", "lastVisit": "2026-06-16", "status": "Active" }
+    ],
+    "createdAt": "2025-09-30T00:00:00.000Z"
+  },
+  {
+    "id": "pa-022",
+    "email": "riaz.khan@helpinghand.example",
+    "name": "Riaz Khan",
+    "age": 78,
+    "gender": "Male",
+    "nationality": "Pakistani",
+    "neighborhood": "MBZ City",
+    "city": "Abu Dhabi",
+    "lat": 24.4005,
+    "lng": 54.5530,
+    "preferences": {
+      "language": "Urdu",
+      "gender": "Male",
+      "nationality": "Pakistani",
+      "availability": "Hourly",
+      "needs": { "companionship": true, "mobilitySupport": true, "medicationManagement": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Post-stroke (right-side weakness)", "Hypertension"],
+      "medications": ["Aspirin 75mg (daily)", "Atorvastatin 20mg (evening)", "Amlodipine 5mg (morning)"],
+      "bloodType": "B+",
+      "notes": "Loves Urdu poetry. Patient, slow speech.",
+      "emergencyContacts": [
+        { "id": "ec-122-1", "name": "Bilal Khan", "relation": "Son", "phone": "+971 55 887 4422" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-122-1", "name": "Dr. Karim Aziz", "specialty": "Cardiologist", "clinic": "NMC Specialty Hospital", "phone": "+971 2 633 2255" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-026", "volunteerName": "Sajjad Ali", "volunteerNeighborhood": "MBZ City", "hours": 30.0, "sessions": 12, "startDate": "2025-10-15", "lastVisit": "2026-06-16", "status": "Active" }
+    ],
+    "createdAt": "2025-09-12T00:00:00.000Z"
+  },
+  {
+    "id": "pa-023",
+    "email": "imelda.delacruz@helpinghand.example",
+    "name": "Imelda dela Cruz",
+    "age": 73,
+    "gender": "Female",
+    "nationality": "Filipino",
+    "neighborhood": "Khalifa City",
+    "city": "Abu Dhabi",
+    "lat": 24.4315,
+    "lng": 54.5780,
+    "preferences": {
+      "language": "English",
+      "gender": "Female",
+      "nationality": "Filipino",
+      "availability": "Live-in",
+      "needs": { "companionship": true, "mealPreparation": true, "mobilitySupport": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Arthritis", "Mild depression"],
+      "medications": ["Paracetamol 500mg as needed", "Sertraline 50mg (morning)"],
+      "bloodType": "O+",
+      "notes": "Loves Filipino soap operas and adobo. Family back home.",
+      "emergencyContacts": [
+        { "id": "ec-123-1", "name": "Jose dela Cruz", "relation": "Son (Philippines)", "phone": "+63 917 123 4567" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-123-1", "name": "Dr. Maria Santos-Lim", "specialty": "Rheumatologist", "clinic": "Burjeel Hospital", "phone": "+971 2 508 5555" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-023", "volunteerName": "Roselle dela Cruz", "volunteerNeighborhood": "Khalifa City", "hours": 76.0, "sessions": 18, "startDate": "2025-11-05", "lastVisit": "2026-06-17", "status": "Active" }
+    ],
+    "createdAt": "2025-10-08T00:00:00.000Z"
+  },
+  {
+    "id": "pa-024",
+    "email": "david.robinson@helpinghand.example",
+    "name": "David Robinson",
+    "age": 72,
+    "gender": "Male",
+    "nationality": "British",
+    "neighborhood": "Al Maryah Island",
+    "city": "Abu Dhabi",
+    "lat": 24.4970,
+    "lng": 54.3870,
+    "preferences": {
+      "language": "English",
+      "gender": "Any",
+      "nationality": "",
+      "availability": "Hourly",
+      "needs": { "companionship": true, "mobilitySupport": true }
+    },
+    "health": {
+      "allergies": ["Penicillin"],
+      "conditions": ["Post-knee-replacement (2025)", "Hypertension"],
+      "medications": ["Amlodipine 5mg (morning)", "Paracetamol as needed"],
+      "bloodType": "A+",
+      "notes": "Independent. Enjoys long conversations about football and politics.",
+      "emergencyContacts": [
+        { "id": "ec-124-1", "name": "Emma Robinson", "relation": "Daughter (UK)", "phone": "+44 7700 900 122" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-124-1", "name": "Dr. James Whitfield", "specialty": "Orthopaedic surgeon", "clinic": "NMC Royal Hospital", "phone": "+971 2 506 8333" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-013", "volunteerName": "Reema Khoury", "volunteerNeighborhood": "Al Karamah", "hours": 12.0, "sessions": 5, "startDate": "2025-09-04", "lastVisit": "2025-12-20", "status": "Completed" }
+    ],
+    "createdAt": "2025-08-22T00:00:00.000Z"
+  },
+  {
+    "id": "pa-025",
+    "email": "mansour.aljaber@helpinghand.example",
+    "name": "Mansour Al-Jaber",
+    "age": 83,
+    "gender": "Male",
+    "nationality": "Emirati",
+    "neighborhood": "Al Bahia",
+    "city": "Abu Dhabi",
+    "lat": 24.5260,
+    "lng": 54.5800,
+    "preferences": {
+      "language": "Arabic",
+      "gender": "Male",
+      "nationality": "Emirati",
+      "availability": "Hourly",
+      "needs": { "mobilitySupport": true, "personalCare": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Post-stroke (mild)", "Hypertension"],
+      "medications": ["Aspirin 75mg (daily)", "Amlodipine 5mg (morning)"],
+      "bloodType": "O+",
+      "notes": "Quiet, dignified man. Loves desert photography books.",
+      "emergencyContacts": [
+        { "id": "ec-125-1", "name": "Abdullah Al-Jaber", "relation": "Son", "phone": "+971 50 776 3322" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-125-1", "name": "Dr. Fatima Al-Otaibi", "specialty": "Geriatrician", "clinic": "Sheikh Khalifa Medical City", "phone": "+971 2 819 0000" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-028", "volunteerName": "Faisal Al-Yousfi", "volunteerNeighborhood": "Khalifa City", "hours": 22.0, "sessions": 10, "startDate": "2025-12-02", "lastVisit": "2026-06-15", "status": "Active" }
+    ],
+    "createdAt": "2025-11-04T00:00:00.000Z"
+  },
+  {
+    "id": "pa-026",
+    "email": "esther.gichuru@helpinghand.example",
+    "name": "Esther Gichuru",
+    "age": 68,
+    "gender": "Female",
+    "nationality": "Kenyan",
+    "neighborhood": "Al Raha",
+    "city": "Abu Dhabi",
+    "lat": 24.4170,
+    "lng": 54.6280,
+    "preferences": {
+      "language": "Swahili",
+      "gender": "Female",
+      "nationality": "Kenyan",
+      "availability": "Hourly",
+      "needs": { "companionship": true, "mealPreparation": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Hypertension"],
+      "medications": ["Lisinopril 10mg (morning)"],
+      "bloodType": "A+",
+      "notes": "Loves to cook ugali. Sings hymns on Sunday mornings.",
+      "emergencyContacts": [
+        { "id": "ec-126-1", "name": "Faith Gichuru", "relation": "Daughter", "phone": "+971 55 332 8800" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-126-1", "name": "Dr. James Mwangi", "specialty": "GP", "clinic": "HealthPlus Family Clinic", "phone": "+971 2 446 8888" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-025", "volunteerName": "Lilian Mwakio", "volunteerNeighborhood": "Yas Island", "hours": 14.0, "sessions": 6, "startDate": "2026-02-20", "lastVisit": "2026-06-14", "status": "Active" }
+    ],
+    "createdAt": "2026-02-02T00:00:00.000Z"
+  },
+  {
+    "id": "pa-027",
+    "email": "rukshana.begum@helpinghand.example",
+    "name": "Rukshana Begum",
+    "age": 76,
+    "gender": "Female",
+    "nationality": "Bangladeshi",
+    "neighborhood": "Mussafah",
+    "city": "Abu Dhabi",
+    "lat": 24.3540,
+    "lng": 54.5025,
+    "preferences": {
+      "language": "Bengali",
+      "gender": "Female",
+      "nationality": "Bangladeshi",
+      "availability": "Hourly",
+      "needs": { "dementiaCare": true, "companionship": true, "personalCare": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Mid-stage dementia", "Mild osteoporosis"],
+      "medications": ["Memantine 10mg (twice daily)", "Vitamin D 1000IU (daily)"],
+      "bloodType": "B-",
+      "notes": "Most settled mid-morning. Loves Bengali folk songs.",
+      "emergencyContacts": [
+        { "id": "ec-127-1", "name": "Sadia Begum", "relation": "Daughter", "phone": "+971 55 661 2200" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-127-1", "name": "Dr. Anisha Akhter", "specialty": "Neurologist", "clinic": "Cleveland Clinic Abu Dhabi", "phone": "+971 2 659 0200" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-020", "volunteerName": "Anika Rahman", "volunteerNeighborhood": "Reem Island", "hours": 30.0, "sessions": 12, "startDate": "2025-12-04", "lastVisit": "2026-06-15", "status": "Active" }
+    ],
+    "createdAt": "2025-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "pa-028",
+    "email": "robert.yuen@helpinghand.example",
+    "name": "Robert Yuen",
+    "age": 80,
+    "gender": "Male",
+    "nationality": "British",
+    "neighborhood": "Saadiyat Island",
+    "city": "Abu Dhabi",
+    "lat": 24.5225,
+    "lng": 54.4525,
+    "preferences": {
+      "language": "English",
+      "gender": "Female",
+      "nationality": "Sri Lankan",
+      "availability": "Hourly",
+      "needs": { "companionship": true, "mealPreparation": true, "mobilitySupport": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Mild arthritis", "Mild memory issues"],
+      "medications": ["Paracetamol 500mg as needed"],
+      "bloodType": "AB+",
+      "notes": "Born in Hong Kong, retired in Abu Dhabi. Loves dim sum and old films.",
+      "emergencyContacts": [
+        { "id": "ec-128-1", "name": "Helen Yuen", "relation": "Wife", "phone": "+971 50 998 1100" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-128-1", "name": "Dr. Wong Lee", "specialty": "Geriatrician", "clinic": "NMC Royal Hospital", "phone": "+971 2 506 8333" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-029", "volunteerName": "Indira Perera", "volunteerNeighborhood": "Saadiyat Island", "hours": 26.0, "sessions": 11, "startDate": "2025-12-08", "lastVisit": "2026-06-16", "status": "Active" }
+    ],
+    "createdAt": "2025-11-12T00:00:00.000Z"
+  },
+  {
+    "id": "pa-029",
+    "email": "layla.bayoumi@helpinghand.example",
+    "name": "Layla Bayoumi",
+    "age": 75,
+    "gender": "Female",
+    "nationality": "Syrian",
+    "neighborhood": "Al Bahia",
+    "city": "Abu Dhabi",
+    "lat": 24.5265,
+    "lng": 54.5805,
+    "preferences": {
+      "language": "Arabic",
+      "gender": "Female",
+      "nationality": "Syrian",
+      "availability": "Hourly",
+      "needs": { "companionship": true, "dementiaCare": true, "mealPreparation": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Early-stage dementia", "Hypertension"],
+      "medications": ["Donepezil 5mg (evening)", "Amlodipine 5mg (morning)"],
+      "bloodType": "O+",
+      "notes": "Misses Damascus. Calmest with Levantine cooking smells.",
+      "emergencyContacts": [
+        { "id": "ec-129-1", "name": "Rami Bayoumi", "relation": "Son", "phone": "+971 55 445 7700" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-129-1", "name": "Dr. Lina Khalil", "specialty": "Neurologist", "clinic": "American Center for Psychiatry", "phone": "+971 2 651 8000" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-030", "volunteerName": "Sara Awad", "volunteerNeighborhood": "Al Bahia", "hours": 28.0, "sessions": 12, "startDate": "2025-11-14", "lastVisit": "2026-06-15", "status": "Active" }
+    ],
+    "createdAt": "2025-10-25T00:00:00.000Z"
+  },
+  {
+    "id": "pa-030",
+    "email": "anil.pradhan@helpinghand.example",
+    "name": "Anil Pradhan",
+    "age": 78,
+    "gender": "Male",
+    "nationality": "Nepali",
+    "neighborhood": "Mina Zayed",
+    "city": "Abu Dhabi",
+    "lat": 24.5025,
+    "lng": 54.3760,
+    "preferences": {
+      "language": "Nepali",
+      "gender": "Female",
+      "nationality": "Nepali",
+      "availability": "Hourly",
+      "needs": { "mobilitySupport": true, "companionship": true, "mealPreparation": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Type 2 diabetes", "Recovering from a fall"],
+      "medications": ["Metformin 500mg (twice daily)", "Vitamin D 1000IU (daily)"],
+      "bloodType": "A+",
+      "notes": "Slow on stairs after his fall. Loves dal bhat and stories of the mountains.",
+      "emergencyContacts": [
+        { "id": "ec-130-1", "name": "Suresh Pradhan", "relation": "Son", "phone": "+971 55 778 4422" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-130-1", "name": "Dr. Krishna Sharma", "specialty": "Geriatrician", "clinic": "Burjeel Hospital", "phone": "+971 2 508 5555" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-031", "volunteerName": "Sunita Tamang", "volunteerNeighborhood": "Mina Zayed", "hours": 20.0, "sessions": 9, "startDate": "2026-01-10", "lastVisit": "2026-06-14", "status": "Active" }
+    ],
+    "createdAt": "2025-12-15T00:00:00.000Z"
+  },
+  {
+    "id": "pa-031",
+    "email": "yohanes.bekele@helpinghand.example",
+    "name": "Yohanes Bekele",
+    "age": 73,
+    "gender": "Male",
+    "nationality": "Ethiopian",
+    "neighborhood": "Al Raha",
+    "city": "Abu Dhabi",
+    "lat": 24.4175,
+    "lng": 54.6280,
+    "preferences": {
+      "language": "Amharic",
+      "gender": "Male",
+      "nationality": "Ethiopian",
+      "availability": "Hourly",
+      "needs": { "companionship": true, "mobilitySupport": true }
+    },
+    "health": {
+      "allergies": [],
+      "conditions": ["Hypertension"],
+      "medications": ["Lisinopril 10mg (morning)"],
+      "bloodType": "O+",
+      "notes": "Loves injera and Amharic worship music.",
+      "emergencyContacts": [
+        { "id": "ec-131-1", "name": "Selam Bekele", "relation": "Daughter", "phone": "+971 50 332 6611" }
+      ],
+      "medicalContacts": [
+        { "id": "mc-131-1", "name": "Dr. Yared Haile", "specialty": "GP", "clinic": "HealthPlus Family Clinic", "phone": "+971 2 446 8888" }
+      ],
+      "otherContacts": []
+    },
+    "volunteerHistory": [
+      { "volunteerId": "v-032", "volunteerName": "Dawit Tesfaye", "volunteerNeighborhood": "Al Raha", "hours": 18.0, "sessions": 8, "startDate": "2026-02-01", "lastVisit": "2026-06-15", "status": "Active" }
+    ],
+    "createdAt": "2026-01-08T00:00:00.000Z"
   }
 ]

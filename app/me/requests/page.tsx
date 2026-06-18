@@ -9,6 +9,7 @@ import { Avatar } from '@/components/Avatar';
 import { Reveal } from '@/components/motion/Reveal';
 import { EASE_OUT } from '@/lib/motion-ease';
 import { SKILL_LABELS, type CareRequest, type RequestStatus } from '@/lib/types';
+import { ScheduleVisual, deriveSchedule } from '@/components/ScheduleVisual';
 
 function timeAgo(iso: string): string {
   const mins = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
@@ -204,13 +205,32 @@ function RequestCard({
         </div>
       )}
 
-      {request.requestedNeeds.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {request.requestedNeeds.map(n => (
-            <span key={n} className="chip text-sm">{SKILL_LABELS[n]}</span>
-          ))}
-        </div>
-      )}
+      <div className="flex flex-wrap gap-2 items-center">
+        {request.requestedNeeds.map(n => (
+          <span key={n} className="chip text-sm">{SKILL_LABELS[n]}</span>
+        ))}
+        <span className="chip-warm text-sm">
+          {request.requestedAvailability === 'Live-in'
+            ? 'Live-in'
+            : `${request.requestedHoursPerWeek ?? 8} hrs/week`}
+        </span>
+      </div>
+
+      {(() => {
+        const sched = deriveSchedule(request);
+        if (!sched) return null;
+        const accepted = request.status === 'accepted';
+        return (
+          <ScheduleVisual
+            schedule={sched}
+            title={accepted ? 'Your confirmed schedule' : 'The schedule you asked for'}
+            subtitle={accepted
+              ? `${request.volunteerName.split(' ')[0]} will be helping on these days each week.`
+              : 'These are the days and hours you requested. They’ll confirm once they respond.'}
+            tone={accepted ? 'brand' : 'warm'}
+          />
+        );
+      })()}
 
       {request.responseMessage && (
         <div className="border-t border-brand-100 pt-4">
