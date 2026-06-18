@@ -1,6 +1,12 @@
 node_modules
 .next
 out
-.env*.local
+
+# Env files — never commit credentials.
+# .env.example is the only one that should be tracked.
+.env
+.env.*
+!.env.example
+
 .DS_Store
 *.log
