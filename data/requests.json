@@ -358,59 +358,5 @@
     "status": "pending",
     "createdAt": "2026-06-08T13:00:00.000Z",
     "unread": false
-  },
-  {
-    "id": "8eec0015-4b7f-4228-bd9d-0b735d360cc2",
-    "patientId": "pa-demo-001",
-    "volunteerId": "v-demo-001",
-    "patientName": "Saeed Al-Falasi",
-    "patientAge": 76,
-    "patientGender": "Male",
-    "patientNationality": "Emirati",
-    "patientNeighborhood": "Khalidiyah",
-    "patientLat": 24.4763,
-    "patientLng": 54.3705,
-    "volunteerName": "Amelia Reyes",
-    "volunteerNeighborhood": "Khalidiyah",
-    "message": "",
-    "requestedNeeds": [
-      "mobilitySupport",
-      "mealPreparation",
-      "companionship"
-    ],
-    "requestedAvailability": "Hourly",
-    "requestedHoursPerWeek": 8,
-    "preferredLanguage": "Arabic",
-    "status": "cancelled",
-    "createdAt": "2026-06-17T11:34:25.900Z",
-    "unread": true,
-    "respondedAt": "2026-06-17T11:34:45.053Z"
-  },
-  {
-    "id": "be53c25d-b8bb-4cb7-b65c-246eaa51d339",
-    "patientId": "pa-demo-001",
-    "volunteerId": "v-demo-001",
-    "patientName": "Saeed Al-Falasi",
-    "patientAge": 76,
-    "patientGender": "Male",
-    "patientNationality": "Emirati",
-    "patientNeighborhood": "Khalidiyah",
-    "patientLat": 24.4763,
-    "patientLng": 54.3705,
-    "volunteerName": "Amelia Reyes",
-    "volunteerNeighborhood": "Khalidiyah",
-    "message": "",
-    "requestedNeeds": [
-      "mobilitySupport",
-      "mealPreparation",
-      "companionship"
-    ],
-    "requestedAvailability": "Hourly",
-    "requestedHoursPerWeek": 8,
-    "preferredLanguage": "Arabic",
-    "status": "accepted",
-    "createdAt": "2026-06-17T11:35:12.260Z",
-    "unread": false,
-    "respondedAt": "2026-06-17T11:37:17.284Z"
   }
 ]
