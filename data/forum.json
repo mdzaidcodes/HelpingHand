@@ -1,0 +1,396 @@
+[
+  {
+    "id": "post-p-001",
+    "audience": "patient",
+    "authorId": "pa-001",
+    "authorName": "Aisha Al-Mansouri",
+    "authorRole": "patient",
+    "title": "Sharing a wonderful afternoon with Maria",
+    "body": "Maria came over this Tuesday and helped me organise my photo albums. She knew which stories to ask about and listened to every one of them. My daughters often forget to ask. Just wanted to share — these are the small moments that matter most.",
+    "createdAt": "2026-06-15T14:30:00.000Z",
+    "likedBy": ["pa-007", "pa-009", "pa-014", "pa-005", "pa-018"],
+    "replies": [
+      {
+        "id": "reply-p-001-1",
+        "authorId": "pa-007",
+        "authorName": "Catherine O'Brien",
+        "authorRole": "patient",
+        "body": "Maria has been such a blessing for our family too. The way she remembers everyone's tea preferences — even the smallest things.",
+        "createdAt": "2026-06-15T15:10:00.000Z",
+        "likedBy": ["pa-001", "pa-009"],
+        "replies": [
+          {
+            "id": "reply-p-001-1-1",
+            "authorId": "pa-001",
+            "authorName": "Aisha Al-Mansouri",
+            "authorRole": "patient",
+            "body": "Catherine, I think this is exactly what makes the difference — being noticed.",
+            "createdAt": "2026-06-15T15:40:00.000Z",
+            "likedBy": ["pa-007"],
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "reply-p-001-2",
+        "authorId": "pa-009",
+        "authorName": "Noura Hassan",
+        "authorRole": "patient",
+        "body": "Thank you for sharing this. It reminds me to ask Noura Mansour to look through my late husband's letters with me next visit.",
+        "createdAt": "2026-06-15T16:30:00.000Z",
+        "likedBy": ["pa-001", "pa-014"],
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "post-p-002",
+    "audience": "patient",
+    "authorId": "pa-014",
+    "authorName": "Margaret Walker",
+    "authorRole": "patient",
+    "title": "To anyone unsure about asking for help",
+    "body": "My husband passed in March, and Jovita has been here every Tuesday and Thursday since. For those unsure whether to ask for help: ask. The kindness changes everything. I did not know I needed this kind of company until I had it.",
+    "createdAt": "2026-06-13T09:15:00.000Z",
+    "likedBy": ["pa-001", "pa-007", "pa-009", "pa-018", "pa-005", "pa-012"],
+    "replies": [
+      {
+        "id": "reply-p-002-1",
+        "authorId": "pa-018",
+        "authorName": "Helen Whitford",
+        "authorRole": "patient",
+        "body": "I am so sorry for your loss, Margaret. And so glad you have found Jovita. Welcome to this community.",
+        "createdAt": "2026-06-13T10:00:00.000Z",
+        "likedBy": ["pa-014", "pa-001"],
+        "replies": []
+      },
+      {
+        "id": "reply-p-002-2",
+        "authorId": "pa-007",
+        "authorName": "Catherine O'Brien",
+        "authorRole": "patient",
+        "body": "Sending warmth from Saadiyat. Jovita helped a dear friend's mother last year. A truly steady presence.",
+        "createdAt": "2026-06-13T11:30:00.000Z",
+        "likedBy": ["pa-014"],
+        "replies": []
+      },
+      {
+        "id": "reply-p-002-3",
+        "authorId": "pa-009",
+        "authorName": "Noura Hassan",
+        "authorRole": "patient",
+        "body": "Welcome Margaret. You are not alone — many of us here have felt the same way you describe.",
+        "createdAt": "2026-06-14T08:20:00.000Z",
+        "likedBy": ["pa-014", "pa-018"],
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "post-p-003",
+    "audience": "patient",
+    "authorId": "pa-013",
+    "authorName": "Sundar Iyer",
+    "authorRole": "patient",
+    "title": "Tamil at home, after 47 years",
+    "body": "After 47 years in Abu Dhabi, sometimes I miss hearing Tamil at home. Priya visits twice a week and we talk about the Madras of my childhood. Karthik helps with the physiotherapy after my hip surgery. Both have made my recovery feel less lonely.",
+    "createdAt": "2026-06-12T17:00:00.000Z",
+    "likedBy": ["pa-017", "pa-004", "pa-001", "pa-014", "pa-022"],
+    "replies": [
+      {
+        "id": "reply-p-003-1",
+        "authorId": "pa-017",
+        "authorName": "Ravi Krishnan",
+        "authorRole": "patient",
+        "body": "Sundar, I felt the same when Priya started visiting us. Hearing Tamil from someone who is not family — it is a gift.",
+        "createdAt": "2026-06-12T18:30:00.000Z",
+        "likedBy": ["pa-013"],
+        "replies": []
+      },
+      {
+        "id": "reply-p-003-2",
+        "authorId": "pa-004",
+        "authorName": "Rajesh Verma",
+        "authorRole": "patient",
+        "body": "Glad to hear Karthik is helping. He worked with me too after my knee replacement. His pacing is kind.",
+        "createdAt": "2026-06-12T20:00:00.000Z",
+        "likedBy": ["pa-013", "pa-017"],
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "post-p-004",
+    "audience": "patient",
+    "authorId": "pa-019",
+    "authorName": "Khaled Hijazi",
+    "authorRole": "patient",
+    "title": "Hassan and I have started weekly chess",
+    "body": "After our regular session, Hassan and I play one game of chess. Funny — I taught my sons but they were never interested. Now I have someone who plays as I learned in Beirut. Small things give a week shape.",
+    "createdAt": "2026-06-11T19:45:00.000Z",
+    "likedBy": ["pa-001", "pa-005", "pa-014", "pa-018", "pa-029"],
+    "replies": [
+      {
+        "id": "reply-p-004-1",
+        "authorId": "pa-029",
+        "authorName": "Layla Bayoumi",
+        "authorRole": "patient",
+        "body": "Khaled, this is lovely. Sara plays cards with me on Thursdays — same thing, gives the week its rhythm.",
+        "createdAt": "2026-06-12T10:15:00.000Z",
+        "likedBy": ["pa-019"],
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "post-p-005",
+    "audience": "patient",
+    "authorId": "pa-008",
+    "authorName": "Mohammed Al-Suwaidi",
+    "authorRole": "patient",
+    "title": "Live-in dementia care — six months in",
+    "body": "Posting on behalf of our family. For those considering live-in care for a parent with dementia: I was hesitant. After six months with Liwayway, my father has a routine he trusts and our household can finally sleep at night. We are grateful beyond words.",
+    "createdAt": "2026-06-10T13:00:00.000Z",
+    "likedBy": ["pa-003", "pa-001", "pa-009", "pa-015", "pa-021", "pa-027"],
+    "replies": [
+      {
+        "id": "reply-p-005-1",
+        "authorId": "pa-003",
+        "authorName": "Layla Habib",
+        "authorRole": "patient",
+        "body": "We had the same hesitation. Six months with Liwayway here too — she is family now.",
+        "createdAt": "2026-06-10T14:20:00.000Z",
+        "likedBy": ["pa-008"],
+        "replies": []
+      },
+      {
+        "id": "reply-p-005-2",
+        "authorId": "pa-015",
+        "authorName": "Abdullah Al-Mazrouei",
+        "authorRole": "patient",
+        "body": "Thank you for posting this. Considering it for my wife. Knowing other Emirati families have done the same helps.",
+        "createdAt": "2026-06-10T16:00:00.000Z",
+        "likedBy": ["pa-008", "pa-003"],
+        "replies": [
+          {
+            "id": "reply-p-005-2-1",
+            "authorId": "pa-008",
+            "authorName": "Mohammed Al-Suwaidi",
+            "authorRole": "patient",
+            "body": "Abdullah, send a message any time. Happy to share what the first weeks were like.",
+            "createdAt": "2026-06-11T08:30:00.000Z",
+            "likedBy": ["pa-015"],
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "post-v-001",
+    "audience": "volunteer",
+    "authorId": "v-001",
+    "authorName": "Maria Santos",
+    "authorRole": "volunteer",
+    "title": "A small win today",
+    "body": "Aisha asked me to look at her old photo albums today. Found pictures of her parents' wedding from 1948 — Sharjah before the Federation. She told stories I doubt anyone has heard in decades. Reminded me why we do this work.",
+    "createdAt": "2026-06-15T18:00:00.000Z",
+    "likedBy": ["v-003", "v-005", "v-014", "v-022", "v-019", "v-013"],
+    "replies": [
+      {
+        "id": "reply-v-001-1",
+        "authorId": "v-003",
+        "authorName": "Fatima Al-Hashimi",
+        "authorRole": "volunteer",
+        "body": "Maria, this gave me goosebumps. Sharjah in 1948 — what a window. Did she let you photograph any of the pictures? Sometimes families want copies for the grandchildren.",
+        "createdAt": "2026-06-15T18:45:00.000Z",
+        "likedBy": ["v-001"],
+        "replies": [
+          {
+            "id": "reply-v-001-1-1",
+            "authorId": "v-001",
+            "authorName": "Maria Santos",
+            "authorRole": "volunteer",
+            "body": "We will ask her daughter next week. Beautiful idea, thank you.",
+            "createdAt": "2026-06-15T19:30:00.000Z",
+            "likedBy": ["v-003"],
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "reply-v-001-2",
+        "authorId": "v-005",
+        "authorName": "Liwayway Cruz",
+        "authorRole": "volunteer",
+        "body": "The stories are the best part. Sometimes I think we are just witnesses.",
+        "createdAt": "2026-06-15T20:00:00.000Z",
+        "likedBy": ["v-001", "v-003", "v-027"],
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "post-v-002",
+    "audience": "volunteer",
+    "authorId": "v-005",
+    "authorName": "Liwayway Cruz",
+    "authorRole": "volunteer",
+    "title": "Two years with the same family today",
+    "body": "Today marks two years caring for my live-in family. Their routines have become mine, and somehow it still feels new each morning. For new volunteers worried about commitment — start with one family. Listen. Stay. The rest follows.",
+    "createdAt": "2026-06-14T07:30:00.000Z",
+    "likedBy": ["v-001", "v-003", "v-014", "v-022", "v-027", "v-009", "v-013", "v-019"],
+    "replies": [
+      {
+        "id": "reply-v-002-1",
+        "authorId": "v-014",
+        "authorName": "Jovita Mendoza",
+        "authorRole": "volunteer",
+        "body": "Beautiful, Liwayway. Two years is a lot. I am hoping to reach that with my current family.",
+        "createdAt": "2026-06-14T08:15:00.000Z",
+        "likedBy": ["v-005", "v-001"],
+        "replies": []
+      },
+      {
+        "id": "reply-v-002-2",
+        "authorId": "v-022",
+        "authorName": "Priya Iyer",
+        "authorRole": "volunteer",
+        "body": "Thank you for showing what continuity looks like. New volunteers benefit from seeing this.",
+        "createdAt": "2026-06-14T09:30:00.000Z",
+        "likedBy": ["v-005"],
+        "replies": []
+      },
+      {
+        "id": "reply-v-002-3",
+        "authorId": "v-013",
+        "authorName": "Reema Khoury",
+        "authorRole": "volunteer",
+        "body": "Congratulations. I will save this post for the days I doubt myself.",
+        "createdAt": "2026-06-14T11:00:00.000Z",
+        "likedBy": ["v-005", "v-001", "v-014"],
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "post-v-003",
+    "audience": "volunteer",
+    "authorId": "v-007",
+    "authorName": "Rajiv Patel",
+    "authorRole": "volunteer",
+    "title": "Tip — small wins in mobility recovery",
+    "body": "For volunteers doing post-surgery recovery: don't aim for the milestone walk. Aim for the first step better than yesterday. The trust you build in those small wins changes everything. Patients can feel when we are setting realistic goals versus impatient ones.",
+    "createdAt": "2026-06-13T14:00:00.000Z",
+    "likedBy": ["v-015", "v-005", "v-024", "v-017", "v-026"],
+    "replies": [
+      {
+        "id": "reply-v-003-1",
+        "authorId": "v-015",
+        "authorName": "Karthik Reddy",
+        "authorRole": "volunteer",
+        "body": "This is exactly right. Patience is the actual technique.",
+        "createdAt": "2026-06-13T15:30:00.000Z",
+        "likedBy": ["v-007"],
+        "replies": []
+      },
+      {
+        "id": "reply-v-003-2",
+        "authorId": "v-017",
+        "authorName": "Tanvir Hossain",
+        "authorRole": "volunteer",
+        "body": "Saving this. New volunteer in our area is starting next week — going to share with her.",
+        "createdAt": "2026-06-13T17:00:00.000Z",
+        "likedBy": ["v-007", "v-015"],
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "post-v-004",
+    "audience": "volunteer",
+    "authorId": "v-027",
+    "authorName": "Hala Abdelrahman",
+    "authorRole": "volunteer",
+    "title": "The moment of recognition in dementia care",
+    "body": "Today Salwa called me by her sister's name. I think she meant me, but for a moment she was somewhere else. I just held her hand and said 'I am here.' Sometimes that is the whole job. We don't need to correct everything.",
+    "createdAt": "2026-06-12T20:30:00.000Z",
+    "likedBy": ["v-005", "v-010", "v-020", "v-030", "v-022", "v-001"],
+    "replies": [
+      {
+        "id": "reply-v-004-1",
+        "authorId": "v-010",
+        "authorName": "Elena Petrova",
+        "authorRole": "volunteer",
+        "body": "Hala, this captures it perfectly. The pressure to 'correct' is the trap. Presence is the answer.",
+        "createdAt": "2026-06-12T21:15:00.000Z",
+        "likedBy": ["v-027", "v-020"],
+        "replies": []
+      },
+      {
+        "id": "reply-v-004-2",
+        "authorId": "v-020",
+        "authorName": "Anika Rahman",
+        "authorRole": "volunteer",
+        "body": "Yes. Thank you for putting it in words. Sharing with my newest patient's family — they keep apologising for her mother's confusion.",
+        "createdAt": "2026-06-13T07:00:00.000Z",
+        "likedBy": ["v-027"],
+        "replies": [
+          {
+            "id": "reply-v-004-2-1",
+            "authorId": "v-027",
+            "authorName": "Hala Abdelrahman",
+            "authorRole": "volunteer",
+            "body": "Tell them gently — confusion is not a failure of memory, it's the disease. The family carrying guilt makes it harder for everyone.",
+            "createdAt": "2026-06-13T08:30:00.000Z",
+            "likedBy": ["v-020", "v-010"],
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "post-v-005",
+    "audience": "volunteer",
+    "authorId": "v-019",
+    "authorName": "Omar Sayed",
+    "authorRole": "volunteer",
+    "title": "How do you track dietary restrictions across patients?",
+    "body": "I'm visiting five families a week now and each has different food needs — diabetic-friendly, soft textures, Halal-only, no shellfish, etc. I keep a notebook but mistakes have happened. Looking for ways to make this easier.",
+    "createdAt": "2026-06-11T11:00:00.000Z",
+    "likedBy": ["v-002", "v-022", "v-024"],
+    "replies": [
+      {
+        "id": "reply-v-005-1",
+        "authorId": "v-002",
+        "authorName": "Aarti Sharma",
+        "authorRole": "volunteer",
+        "body": "I use a tiny notebook with a tab per patient and a short list at the top of each tab — 'cannot have, prefers, avoid'. Old school but works.",
+        "createdAt": "2026-06-11T11:45:00.000Z",
+        "likedBy": ["v-019", "v-022"],
+        "replies": []
+      },
+      {
+        "id": "reply-v-005-2",
+        "authorId": "v-022",
+        "authorName": "Priya Iyer",
+        "authorRole": "volunteer",
+        "body": "Same. Plus I keep a phone note pinned for the patient I'm visiting that day. Open it on the way over.",
+        "createdAt": "2026-06-11T13:00:00.000Z",
+        "likedBy": ["v-019", "v-002"],
+        "replies": []
+      },
+      {
+        "id": "reply-v-005-3",
+        "authorId": "v-024",
+        "authorName": "Mohamed Yousef",
+        "authorRole": "volunteer",
+        "body": "Photos help me — I take a picture of each family's medication shelf and pantry. Refresh my memory before each visit.",
+        "createdAt": "2026-06-11T15:20:00.000Z",
+        "likedBy": ["v-019", "v-002", "v-022"],
+        "replies": []
+      }
+    ]
+  }
+]

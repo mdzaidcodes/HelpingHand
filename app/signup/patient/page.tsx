@@ -39,7 +39,7 @@ export default function PatientSignupPage() {
   const router = useRouter();
   const { signIn } = useSession();
   const [step, setStep] = useState<1 | 2>(1);
-  const [account, setAccount] = useState<Account>({ name: '', email: '', neighborhood: 'Khalidiyah' });
+  const [account, setAccount] = useState<Account>({ name: '', email: '', neighborhood: '' });
   const [prefs, setPrefs] = useState<Preferences>(EMPTY_PREFERENCES);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -50,11 +50,12 @@ export default function PatientSignupPage() {
 
   function withDefaults(a: Account): Account {
     const stamp = Date.now().toString(36);
-    const name = a.name.trim() || 'Guest Patient';
+    const name = a.name.trim() || 'New Member';
     const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(a.email)
       ? a.email.trim()
-      : `guest-${stamp}@helpinghand.example`;
-    return { ...a, name, email };
+      : `member-${stamp}@helpinghand.example`;
+    const neighborhood = a.neighborhood || 'Al Markaziyah';
+    return { ...a, name, email, neighborhood };
   }
 
   function next() {
@@ -126,6 +127,7 @@ export default function PatientSignupPage() {
               </Field>
               <Field label="Where do you live?">
                 <select className="select" value={account.neighborhood} onChange={e => setAccount(a => ({ ...a, neighborhood: e.target.value }))}>
+                  <option value="" disabled>Select your neighborhood…</option>
                   {NEIGHBORHOODS.map(n => <option key={n}>{n}</option>)}
                 </select>
               </Field>

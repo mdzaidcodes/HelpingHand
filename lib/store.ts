@@ -21,7 +21,7 @@
 
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import type { Patient, Volunteer, CareRequest } from './types';
+import type { Patient, Volunteer, CareRequest, ForumPost } from './types';
 
 /* ----------------------------------------------------------------
    Backend detection
@@ -45,6 +45,7 @@ const DATA_DIR = path.join(process.cwd(), 'data');
 const PATIENTS_FILE = path.join(DATA_DIR, 'patients.json');
 const VOLUNTEERS_FILE = path.join(DATA_DIR, 'volunteers.json');
 const REQUESTS_FILE = path.join(DATA_DIR, 'requests.json');
+const FORUM_FILE = path.join(DATA_DIR, 'forum.json');
 
 async function ensureFile(file: string): Promise<void> {
   await fs.mkdir(DATA_DIR, { recursive: true });
@@ -86,7 +87,8 @@ async function readSeedJson<T>(file: string): Promise<T[]> {
 const KEY_PATIENTS = 'hh:patients';
 const KEY_VOLUNTEERS = 'hh:volunteers';
 const KEY_REQUESTS = 'hh:requests';
-const KEY_SEEDED = 'hh:seeded:v1';
+const KEY_FORUM = 'hh:forum';
+const KEY_SEEDED = 'hh:seeded:v2';
 
 let redisClient: import('@upstash/redis').Redis | null = null;
 async function getRedis() {
@@ -106,15 +108,17 @@ async function ensureSeeded(): Promise<void> {
     if (!redis) return;
     const already = await redis.get(KEY_SEEDED);
     if (already) return;
-    const [pats, vols, reqs] = await Promise.all([
+    const [pats, vols, reqs, forum] = await Promise.all([
       readSeedJson<Patient>(PATIENTS_FILE),
       readSeedJson<Volunteer>(VOLUNTEERS_FILE),
       readSeedJson<CareRequest>(REQUESTS_FILE),
+      readSeedJson<ForumPost>(FORUM_FILE),
     ]);
     await Promise.all([
       redis.set(KEY_PATIENTS, JSON.stringify(pats)),
       redis.set(KEY_VOLUNTEERS, JSON.stringify(vols)),
       redis.set(KEY_REQUESTS, JSON.stringify(reqs)),
+      redis.set(KEY_FORUM, JSON.stringify(forum)),
       redis.set(KEY_SEEDED, '1'),
     ]);
   })();
@@ -249,6 +253,20 @@ export async function upsertRequest(req: CareRequest): Promise<CareRequest> {
   else rows[i] = req;
   await writeRequests(rows);
   return req;
+}
+
+/* Forum */
+
+export async function readForumPosts(): Promise<ForumPost[]> {
+  return useRedis
+    ? readFromRedis<ForumPost>(KEY_FORUM)
+    : readFromFile<ForumPost>(FORUM_FILE);
+}
+
+export async function writeForumPosts(rows: ForumPost[]): Promise<void> {
+  return useRedis
+    ? writeToRedis(KEY_FORUM, rows)
+    : writeToFile(FORUM_FILE, rows);
 }
 
 /** Which backend is currently active. Exposed for diagnostics. */

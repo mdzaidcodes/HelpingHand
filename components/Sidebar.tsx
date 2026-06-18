@@ -20,6 +20,7 @@ const PATIENT_LINKS: NavLink[] = [
   { href: '/me/requests',  label: 'My requests',     icon: <ChatIcon /> },
   { href: '/preferences',  label: 'Preferences',     icon: <SlidersIcon /> },
   { href: '/me/health',    label: 'Health profile',  icon: <HeartIcon /> },
+  { href: '/forum',        label: 'Forum',           icon: <ForumIcon /> },
 ];
 
 const VOLUNTEER_LINKS: NavLink[] = [
@@ -27,6 +28,7 @@ const VOLUNTEER_LINKS: NavLink[] = [
   { href: '/volunteers',  label: 'Community',       icon: <PeopleIcon /> },
   { href: '/training',    label: 'Training',        icon: <BookIcon /> },
   { href: '/interview',   label: 'Interview',       icon: <CalendarIcon /> },
+  { href: '/forum',       label: 'Forum',           icon: <ForumIcon /> },
 ];
 
 const GUEST_LINKS: NavLink[] = [
@@ -292,6 +294,14 @@ function MenuIcon() {
       <line x1="3" y1="6" x2="21" y2="6" />
       <line x1="3" y1="12" x2="21" y2="12" />
       <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  );
+}
+
+function ForumIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
     </svg>
   );
 }

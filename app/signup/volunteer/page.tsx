@@ -33,7 +33,7 @@ interface Form {
   name: string;
   email: string;
   age?: number;
-  gender: Gender;
+  gender: Gender | '';
   nationality: string;
   languages: string[];
   yearsExperience: number;
@@ -55,9 +55,9 @@ export default function VolunteerSignupPage() {
   const { signIn } = useSession();
   const [step, setStep] = useState<1 | 2>(1);
   const [form, setForm] = useState<Form>({
-    name: '', email: '', gender: 'Female', nationality: 'Emirati',
-    languages: ['English'], yearsExperience: 0, bio: '',
-    skills: { ...noSkills }, availability: 'Hourly', certifications: [], neighborhood: 'Khalidiyah',
+    name: '', email: '', gender: '', nationality: '',
+    languages: [], yearsExperience: 0, bio: '',
+    skills: { ...noSkills }, availability: 'Both', certifications: [], neighborhood: '',
   });
   const [certInput, setCertInput] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -81,12 +81,14 @@ export default function VolunteerSignupPage() {
 
   function withDefaults(f: Form): Form {
     const stamp = Date.now().toString(36);
-    const name = f.name.trim() || 'Guest Volunteer';
+    const name = f.name.trim() || 'New Volunteer';
     const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)
       ? f.email.trim()
       : `volunteer-${stamp}@helpinghand.example`;
     const languages = f.languages.length > 0 ? f.languages : ['English'];
-    return { ...f, name, email, languages };
+    const gender: Gender = f.gender || 'Female';
+    const neighborhood = f.neighborhood || 'Al Markaziyah';
+    return { ...f, name, email, languages, gender, neighborhood };
   }
 
   function next() {
@@ -150,6 +152,7 @@ export default function VolunteerSignupPage() {
               </Field>
               <Field label="Your neighborhood">
                 <select className="select" value={form.neighborhood} onChange={e => setForm(f => ({ ...f, neighborhood: e.target.value }))}>
+                  <option value="" disabled>Select your neighborhood…</option>
                   {NEIGHBORHOODS.map(n => <option key={n}>{n}</option>)}
                 </select>
               </Field>
@@ -162,6 +165,7 @@ export default function VolunteerSignupPage() {
               </Field>
               <Field label="Your nationality">
                 <select className="select" value={form.nationality} onChange={e => setForm(f => ({ ...f, nationality: e.target.value }))}>
+                  <option value="" disabled>Select your nationality…</option>
                   {COMMON_NATIONALITIES.map(n => <option key={n}>{n}</option>)}
                 </select>
               </Field>

@@ -20,7 +20,8 @@ const redis = new Redis({ url, token });
 const KEY_PATIENTS = 'hh:patients';
 const KEY_VOLUNTEERS = 'hh:volunteers';
 const KEY_REQUESTS = 'hh:requests';
-const KEY_SEEDED = 'hh:seeded:v1';
+const KEY_FORUM = 'hh:forum';
+const KEY_SEEDED = 'hh:seeded:v2';
 
 async function load(filename) {
   const raw = await readFile(path.join(process.cwd(), 'data', filename), 'utf8');
@@ -28,30 +29,34 @@ async function load(filename) {
 }
 
 console.log('→ Reading local seed files…');
-const [patients, volunteers, requests] = await Promise.all([
+const [patients, volunteers, requests, forum] = await Promise.all([
   load('patients.json'),
   load('volunteers.json'),
   load('requests.json'),
+  load('forum.json'),
 ]);
-console.log(`   ${patients.length} patients, ${volunteers.length} volunteers, ${requests.length} requests`);
+console.log(`   ${patients.length} patients, ${volunteers.length} volunteers, ${requests.length} requests, ${forum.length} forum posts`);
 
 console.log('→ Pushing to Redis (overwriting existing keys)…');
 await Promise.all([
   redis.set(KEY_PATIENTS, JSON.stringify(patients)),
   redis.set(KEY_VOLUNTEERS, JSON.stringify(volunteers)),
   redis.set(KEY_REQUESTS, JSON.stringify(requests)),
+  redis.set(KEY_FORUM, JSON.stringify(forum)),
   redis.set(KEY_SEEDED, '1'),
 ]);
 
 console.log('→ Verifying…');
-const [pCheck, vCheck, rCheck] = await Promise.all([
+const [pCheck, vCheck, rCheck, fCheck] = await Promise.all([
   redis.get(KEY_PATIENTS),
   redis.get(KEY_VOLUNTEERS),
   redis.get(KEY_REQUESTS),
+  redis.get(KEY_FORUM),
 ]);
 const arr = v => (Array.isArray(v) ? v : JSON.parse(v));
 console.log(`   ✓ ${arr(pCheck).length} patients in Redis`);
 console.log(`   ✓ ${arr(vCheck).length} volunteers in Redis`);
 console.log(`   ✓ ${arr(rCheck).length} requests in Redis`);
+console.log(`   ✓ ${arr(fCheck).length} forum posts in Redis`);
 
 console.log('\n✓ Sync complete.');
