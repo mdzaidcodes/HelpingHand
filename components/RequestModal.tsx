@@ -476,33 +476,33 @@ function ScheduleEditor({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.25, ease: EASE_OUT }}
-              className="flex items-center gap-3 p-3 rounded-2xl bg-brand-50/60 border border-brand-100"
+              className="flex items-center gap-2 sm:gap-3 p-3 rounded-2xl bg-brand-50/60 border border-brand-100"
             >
-              <span className="font-display font-semibold text-ink-900 w-10 shrink-0">{day}</span>
+              <span className="font-display font-semibold text-ink-900 w-9 sm:w-10 shrink-0">{day}</span>
 
               <button
                 type="button"
                 onClick={() => setDayHours(day, (value[day] ?? 0) - HOUR_STEP)}
                 aria-label={`Decrease ${day} hours`}
-                className="w-9 h-9 rounded-full bg-brand-100 hover:bg-brand-200 text-brand-700 text-lg font-semibold flex items-center justify-center transition"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-100 hover:bg-brand-200 text-brand-700 text-lg font-semibold flex items-center justify-center transition shrink-0"
               >
                 −
               </button>
 
-              <div className="font-display text-lg text-ink-900 w-14 text-center tabular-nums">
-                {(value[day] ?? 0).toFixed((value[day] ?? 0) % 1 === 0 ? 0 : 1)}<span className="text-sm text-ink-500">h</span>
+              <div className="font-display text-base sm:text-lg text-ink-900 w-12 sm:w-14 text-center tabular-nums shrink-0">
+                {(value[day] ?? 0).toFixed((value[day] ?? 0) % 1 === 0 ? 0 : 1)}<span className="text-xs sm:text-sm text-ink-500">h</span>
               </div>
 
               <button
                 type="button"
                 onClick={() => setDayHours(day, (value[day] ?? 0) + HOUR_STEP)}
                 aria-label={`Increase ${day} hours`}
-                className="w-9 h-9 rounded-full bg-brand-100 hover:bg-brand-200 text-brand-700 text-lg font-semibold flex items-center justify-center transition"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-100 hover:bg-brand-200 text-brand-700 text-lg font-semibold flex items-center justify-center transition shrink-0"
               >
                 +
               </button>
 
-              <div className="flex-1 h-2 bg-brand-50 border border-brand-100 rounded-full overflow-hidden">
+              <div className="hidden sm:block flex-1 h-2 bg-brand-50 border border-brand-100 rounded-full overflow-hidden">
                 <motion.div
                   animate={{ width: `${Math.min(100, ((value[day] ?? 0) / maxHours) * 100)}%` }}
                   transition={{ duration: 0.3, ease: EASE_OUT }}

@@ -121,7 +121,7 @@ function PatientView({ session, patient }: { session: { userId: string; name: st
       <Reveal>
         <div className="mb-10">
           <span className="chip-warm mb-4 inline-flex">Your space</span>
-          <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-900 leading-tight">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-ink-900 leading-tight">
             Hello, {session.name.split(' ')[0]}.
           </h1>
           <p className="text-lg text-ink-700 mt-3">Everything we keep for you, gently in one place.</p>
@@ -452,7 +452,7 @@ function VolunteerFullProfile({ volunteer }: { volunteer: Volunteer }) {
             </div>
             <div className="flex-1 space-y-2 text-center md:text-left">
               <div className="flex flex-wrap items-center gap-2 justify-center md:justify-start">
-                <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink-900">{volunteer.name}</h1>
+                <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-ink-900">{volunteer.name}</h1>
                 <span className="chip-warm">✓ Verified volunteer</span>
               </div>
               <p className="text-ink-600 text-lg">

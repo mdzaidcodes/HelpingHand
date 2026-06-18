@@ -130,7 +130,7 @@ export function NotificationCarousel({
     <div className={`relative card-elevated overflow-hidden p-0 ${className}`}>
       <div className="absolute inset-0 bg-hero-grain pointer-events-none opacity-50" />
 
-      <div className="relative px-7 py-8 md:px-10 md:py-10 min-h-[230px]">
+      <div className="relative px-5 py-6 sm:px-7 sm:py-8 md:px-10 md:py-10 min-h-[230px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={current.id}
@@ -138,19 +138,19 @@ export function NotificationCarousel({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.4, ease: EASE_OUT }}
-            className="flex flex-col md:flex-row items-start gap-5"
+            className="flex flex-col md:flex-row items-start gap-4 md:gap-5"
           >
-            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl border shadow-soft shrink-0 ${iconBg}`}>
+            <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl border shadow-soft shrink-0 ${iconBg}`}>
               {current.icon}
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <p className="text-xs font-semibold uppercase tracking-wide text-brand-700 mb-1.5">
                 {current.eyebrow}
               </p>
-              <h3 className="font-display text-2xl font-semibold text-ink-900 leading-tight mb-2">
+              <h3 className="font-display text-xl sm:text-2xl font-semibold text-ink-900 leading-tight mb-2">
                 {current.title}
               </h3>
-              <p className="text-ink-700 leading-relaxed max-w-prose">{current.body}</p>
+              <p className="text-ink-700 leading-relaxed max-w-prose text-sm sm:text-base">{current.body}</p>
               {current.cta && (
                 <Link
                   href={current.cta.href}
@@ -165,7 +165,7 @@ export function NotificationCarousel({
       </div>
 
       {/* Controls strip */}
-      <div className="relative px-7 pb-5 pt-1 flex items-center justify-between border-t border-brand-100/60">
+      <div className="relative px-5 sm:px-7 pb-4 sm:pb-5 pt-2 flex items-center justify-between border-t border-brand-100/60">
         <div className="flex items-center gap-1.5">
           {updates.map((u, i) => (
             <button

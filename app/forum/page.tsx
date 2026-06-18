@@ -102,10 +102,10 @@ export default function ForumPage() {
       <Reveal>
         <div>
           <span className="chip-warm mb-3 inline-flex">{audienceLabel}</span>
-          <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-900 leading-tight">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-ink-900 leading-tight">
             The community floor.
           </h1>
-          <p className="text-lg text-ink-700 mt-3 max-w-2xl">{audienceBlurb}</p>
+          <p className="text-base sm:text-lg text-ink-700 mt-3 max-w-2xl">{audienceBlurb}</p>
         </div>
       </Reveal>
 
@@ -290,7 +290,7 @@ function PostCard({
       )}
 
       {post.replies.length > 0 && (
-        <div className="mt-4 space-y-3 pl-3 md:pl-5 border-l-2 border-brand-100">
+        <div className="mt-4 space-y-3 pl-2 sm:pl-3 md:pl-5 border-l-2 border-brand-100">
           {post.replies.map(r => (
             <ReplyNode
               key={r.id}
@@ -379,7 +379,7 @@ function ReplyNode({
       </div>
 
       {reply.replies.length > 0 && (
-        <div className="mt-3 pl-3 md:pl-5 border-l-2 border-brand-100 space-y-3">
+        <div className="mt-3 pl-2 sm:pl-3 md:pl-5 border-l-2 border-brand-100 space-y-3">
           {reply.replies.map(r => (
             <ReplyNode
               key={r.id}

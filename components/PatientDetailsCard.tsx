@@ -29,12 +29,12 @@ export function PatientDetailsCard({ patient }: PatientDetailsCardProps) {
       transition={{ duration: 0.4, ease: EASE_OUT }}
       className="card-elevated"
     >
-      <header className="flex items-start gap-4 mb-5">
-        <span className="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-brand-700 text-white text-lg shadow-soft shrink-0">
+      <header className="flex items-start gap-3 sm:gap-4 mb-5">
+        <span className="inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-brand-700 text-white text-lg shadow-soft shrink-0">
           ✓
         </span>
-        <div className="flex-1">
-          <h4 className="font-display text-2xl font-semibold text-ink-900 leading-tight">
+        <div className="flex-1 min-w-0">
+          <h4 className="font-display text-xl sm:text-2xl font-semibold text-ink-900 leading-tight">
             {firstName}&apos;s shared details
           </h4>
           <p className="text-ink-600 text-sm mt-1">

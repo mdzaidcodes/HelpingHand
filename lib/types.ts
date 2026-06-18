@@ -30,23 +30,23 @@ export const SKILL_LABELS: Record<CareSkill, string> = {
  */
 export const SKILL_DESCRIPTIONS: Record<CareSkill, string> = {
   mobilitySupport:
-    'Help with the small movements that have started to feel big — getting up from a chair, walking safely to the bathroom, climbing into the car. A steady arm and a careful pace, every time. Choose this if independence at home matters more than ever.',
+    'A steady arm and a careful pace for getting up from a chair, walking to the bathroom, or climbing into the car.',
   medicationManagement:
-    'Gentle, on-time reminders so nothing important is missed — morning insulin, evening blood-pressure pills, anything in between. Your volunteer keeps a quiet record and notices when refills are running low. Best for households juggling more than one prescription.',
+    'Gentle, on-time reminders so the right pills are taken and refills never run low.',
   mealPreparation:
-    'Wholesome meals made the way you like them — favourite family recipes, dietary needs, the smells of home. Your volunteer shops, cooks, and shares the table if you’d like company. Choose this if eating well has become harder than it should be.',
+    'Wholesome meals shopped for and cooked the way you like them, with company at the table if you’d like.',
   companionship:
-    'A regular, friendly visit — conversation over tea, a walk along the corniche, a quiet afternoon of stories shared. The kind of presence that turns long days into something to look forward to. Choose this when the home has started to feel a little too quiet.',
+    'A regular, friendly visit for conversation over tea, a walk, or an afternoon of shared stories.',
   personalCare:
-    'Discreet, respectful help with the routines we usually keep to ourselves — bathing, dressing, grooming. Your volunteer protects your privacy and your pace at every step. Choose this when these tasks have started to feel unsafe or exhausting alone.',
+    'Discreet, respectful help with bathing, dressing, and grooming at your own pace.',
   dementiaCare:
-    'Calm, patient support through the unpredictability of memory loss — gentle redirection, familiar routines, and reassurance when confusion sets in. Volunteers trained in dementia know how to ease distress, not amplify it. Choose this when the day-to-day has become difficult for the whole household.',
+    'Calm, patient support through memory loss from volunteers trained to ease confusion gently.',
   postSurgeryCare:
-    'Steady help through the early weeks of recovery — careful mobility, wound-care reminders, fetching what you need without you having to ask. Pacing matters; your volunteer matches yours. Choose this if a procedure is on the horizon or has just happened.',
+    'Steady help through recovery with careful mobility, wound-care reminders, and fetching what you need.',
   housekeeping:
-    'Quiet help with the home itself — laundry folded, dishes washed, beds made, surfaces wiped down. Nothing strenuous for you, nothing showy from your volunteer. Choose this if keeping the house in order has slowly become more than you’d like.',
+    'Quiet help keeping the home in order with laundry, dishes, and light tidying.',
   transportation:
-    'A reliable lift to doctor’s appointments, the pharmacy, the grocer, or anywhere you’d rather not navigate alone. Your volunteer drives, parks, and waits — and carries the bags back up if needed. Choose this when getting out and about has become the hardest part of the week.',
+    'A reliable lift to appointments, the pharmacy, or the grocer, with help carrying the bags back up.',
 };
 
 export type Availability = 'Live-in' | 'Hourly' | 'Both';

@@ -49,7 +49,7 @@ export default async function VolunteerDetailPage({ params, searchParams }: Page
             </div>
             <div className="flex-1 space-y-3 text-center md:text-left">
               <div className="flex flex-wrap items-center gap-3 justify-center md:justify-start">
-                <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-900">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-ink-900">
                   {volunteer.name}
                 </h1>
                 {result.matchPercent > 0 && (

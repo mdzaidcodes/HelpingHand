@@ -55,7 +55,7 @@ export default async function VolunteersPage({ searchParams }: PageProps) {
             <span className="chip-warm mb-4 inline-flex">
               {hasPrefs ? 'Personally chosen for you' : 'Our community of volunteers'}
             </span>
-            <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-900 leading-tight">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-ink-900 leading-tight">
               {hasPrefs ? 'These volunteers feel like a good fit.' : 'Meet our volunteers.'}
             </h1>
             <p className="text-ink-600 mt-3 text-lg">
